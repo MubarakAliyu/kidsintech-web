@@ -15,7 +15,7 @@ import Link from "next/link";
 
 const CodingClassSection = () => {
   return (
-    <section id="design-stem" className="bg-[#FDF2CB] px-4 sm:px-8 lg:px-[160px] py-12 sm:py-16 lg:py-[96px]">
+    <section id="coding-bootcamp" className="bg-[#FDF2CB] px-4 sm:px-8 lg:px-[160px] py-12 sm:py-16 lg:py-[96px]">
       <article className="container flex flex-col items-center gap-6 sm:gap-8 relative">
         {/* HEADER */}
         <Image
