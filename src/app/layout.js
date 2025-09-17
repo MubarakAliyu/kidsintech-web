@@ -7,12 +7,12 @@ import Footer from "@/components/Footer";
 const polySans = localFont({
   src: [
     {
-      path: "../..//public/fonts/polysanstrial-regular.otf",
+      path: "../../public/fonts/polysanstrial-neutral.otf",
       weight: "400",
       style: "normal",
     },
     {
-      path: "../..//public/fonts/polysanstrial-bold.otf",
+      path: "../../public/fonts/polysanstrial-bold.otf",
       weight: "700",
       style: "normal",
     },

@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Heading from "../../../public/assets/images/founderHeading.png";
 import FounderNote from "../../../public/assets/images/founder-note.png";
 import Founder from "../../../public/assets/images/founder.png";
 import FounderArr1 from "../../../public/assets/images/founder-arr-1.svg";
@@ -10,11 +11,7 @@ const FounderNoteSection = () => {
     <section className="bg-[#D5EAF4] px-8 lg:px-[160px] py-[96px] ">
       <article className="container flex flex-col items-center gap-2 relative">
         {/* HEADER */}
-        <div className="flex flex-col gap-6 relative">
-          <h2 className="text-center text-4xl sm:text-5xl lg:text-[68px] font-bold text-[#95BAD2] text-shadow-[3px_5px_0px_#422110]">
-            Founder's Note
-          </h2>
-        </div>
+        <Image src={Heading} alt="Heading" width={508} height={70} className="lg:w-[508px] w-[352px] lg:h-[70px] h-auto object-contain" />
 
         {/* Decorative Arrow 1 - Points to title */}
         <div className="hidden lg:block absolute -top-[7%] right-[4%]">
@@ -27,13 +24,13 @@ const FounderNoteSection = () => {
           <div className="order-2 lg:order-1 flex-1 flex flex-col justify-end items-start ">
             <div className="flex flex-col -gap-8">
               <div className="flex flex-col p-6 sm:p-8 justify-center items-start sm:gap-8 rounded-4xl bg-white">
-                <p className="text-sm sm:text-xl lg:text-2xl text-[#401D26] lg:leading-[26px] leading-5">
+                <p className="text-base sm:text-xl lg:text-2xl text-[#401D26]">
                   "Every child carries a spark of creativity our mission at Kids in Tech is to nurture that spark into skills, confidence,
                   and curiosity. Through design, coding, and STEM, we want kids not just to use technology, but to create with it."
                 </p>
               </div>
               <div className="flex flex-col p-6 sm:p-8 justify-center items-start gap-6 sm:gap-8 rounded-4xl bg-white">
-                <p className="text-sm sm:text-xl lg:text-2xl text-[#401D26] lg:leading-[26px] leading-5">
+                <p className="text-base sm:text-xl lg:text-2xl text-[#401D26]">
                   "This bootcamp is more than classes; it's a safe space for children to explore, imagine, and build the future with their
                   own hands."
                 </p>
@@ -53,9 +50,9 @@ const FounderNoteSection = () => {
                 />
               </figure>
               <div className="flex flex-col gap-1 items-start">
-                <p className="text-base sm:text-xl lg:text-2xl text-[#401D26] font-normal">Aliyu</p>
-                <p className="text-base sm:text-xl lg:text-2xl text-[#401D26] font-normal">Mubarak</p>
-                <p className="text-base sm:text-xl lg:text-2xl text-[#401D26] font-bold">Founder @ Kids In Tech</p>
+                <p className="text-lg sm:text-xl lg:text-2xl text-[#401D26] font-normal">Aliyu</p>
+                <p className="text-lg sm:text-xl lg:text-2xl text-[#401D26] font-normal">Mubarak</p>
+                <p className="text-lg sm:text-xl lg:text-2xl text-[#401D26] font-bold">Founder @ Kids In Tech</p>
               </div>
             </div>
           </div>

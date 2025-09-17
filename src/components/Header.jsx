@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
@@ -11,10 +11,88 @@ import Menu from "../../public/assets/images/menu.svg";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
   const pathname = usePathname();
   const router = useRouter();
 
   const toggleMenu = () => setIsOpen((prev) => !prev);
+
+  // Intersection Observer to detect active section
+  useEffect(() => {
+    if (pathname !== "/") return;
+
+    const sections = ["coding-bootcamp", "design-stem"];
+    const observerOptions = {
+      root: null,
+      rootMargin: "-20% 0px -60% 0px",
+      threshold: [0, 0.1, 0.3, 0.5, 0.7, 1],
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      // Find the section with the highest intersection ratio
+      let maxRatio = 0;
+      let activeId = "";
+
+      entries.forEach((entry) => {
+        console.log(`Section ${entry.target.id} is intersecting:`, entry.isIntersecting, "ratio:", entry.intersectionRatio);
+        if (entry.isIntersecting && entry.intersectionRatio > maxRatio) {
+          maxRatio = entry.intersectionRatio;
+          activeId = entry.target.id;
+        }
+      });
+
+      if (activeId) {
+        setActiveSection(activeId);
+      }
+    }, observerOptions);
+
+    // Add a small delay to ensure DOM is ready
+    const timeoutId = setTimeout(() => {
+      sections.forEach((sectionId) => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          console.log(`Observing section: ${sectionId}`);
+          observer.observe(element);
+        } else {
+          console.log(`Section not found: ${sectionId}`);
+        }
+      });
+
+      // Set initial active section based on scroll position
+      const checkInitialSection = () => {
+        const scrollY = window.scrollY;
+        const windowHeight = window.innerHeight;
+        const viewportCenter = scrollY + windowHeight / 2;
+
+        for (const sectionId of sections) {
+          const element = document.getElementById(sectionId);
+          if (element) {
+            const rect = element.getBoundingClientRect();
+            const elementTop = rect.top + scrollY;
+            const elementBottom = elementTop + rect.height;
+
+            if (viewportCenter >= elementTop && viewportCenter <= elementBottom) {
+              console.log(`Setting initial active section: ${sectionId}`);
+              setActiveSection(sectionId);
+              break;
+            }
+          }
+        }
+      };
+
+      checkInitialSection();
+    }, 100);
+
+    return () => {
+      clearTimeout(timeoutId);
+      sections.forEach((sectionId) => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          observer.unobserve(element);
+        }
+      });
+    };
+  }, [pathname]);
 
   const scrollOrNavigate = useCallback(
     (sectionId) => {
@@ -28,6 +106,12 @@ const Header = () => {
     [pathname, router]
   );
 
+  // Helper function to check if a section is active
+  const isSectionActive = (sectionId) => {
+    if (pathname !== "/") return false;
+    return activeSection === sectionId;
+  };
+
   const NavLinks = ({ onClick }) => (
     <ul className="flex flex-col lg:flex-row gap-6 lg:gap-10 items-start lg:items-center">
       <li>
@@ -37,7 +121,9 @@ const Header = () => {
             scrollOrNavigate("coding-bootcamp");
             onClick && onClick();
           }}
-          className="text-left lg:text-center text-[#2D2124] hover:text-[#0F766E] transition-colors"
+          className={`text-left lg:text-center transition-colors ${
+            isSectionActive("coding-bootcamp") ? "text-[#0F766E] font-semibold" : "text-[#2D2124] hover:text-[#0F766E]"
+          }`}
         >
           Coding Bootcamp
         </button>
@@ -49,18 +135,32 @@ const Header = () => {
             scrollOrNavigate("design-stem");
             onClick && onClick();
           }}
-          className="text-left lg:text-center text-[#2D2124] hover:text-[#0F766E] transition-colors"
+          className={`text-left lg:text-center transition-colors ${
+            isSectionActive("design-stem") ? "text-[#0F766E] font-semibold" : "text-[#2D2124] hover:text-[#0F766E]"
+          }`}
         >
           Design & STEM
         </button>
       </li>
       <li>
-        <Link href="/gallery" onClick={onClick} className="text-[#2D2124] hover:text-[#0F766E] transition-colors">
+        <Link
+          href="/gallery"
+          onClick={onClick}
+          className={`transition-colors ${
+            pathname === "/gallery" ? "text-[#0F766E] font-semibold" : "text-[#2D2124] hover:text-[#0F766E]"
+          }`}
+        >
           Our Gallery
         </Link>
       </li>
       <li>
-        <Link href="/about-us" onClick={onClick} className="text-[#2D2124] hover:text-[#0F766E] transition-colors">
+        <Link
+          href="/about-us"
+          onClick={onClick}
+          className={`transition-colors ${
+            pathname === "/about-us" ? "text-[#0F766E] font-semibold" : "text-[#2D2124] hover:text-[#0F766E]"
+          }`}
+        >
           About us
         </Link>
       </li>
@@ -69,7 +169,7 @@ const Header = () => {
 
   return (
     <header className="w-full bg-[#FFF7F1] sticky top-0 z-50 border-b border-[#F1E5DE]">
-      <div className="container px-4 lg:px-[160px] py-4 flex items-center justify-between">
+      <div className="container px-4 lg:px-[160px] py-6 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
           <Image src={Logo} alt="Kids in Tech" width={120} height={36} priority />
@@ -146,8 +246,14 @@ const Header = () => {
               {/* Mobile Nav Links */}
               <nav className="mt-2">
                 <div className="flex flex-col gap-5">
-                  <Link href="/" onClick={toggleMenu} className="flex items-center gap-2 text-[#2D2124] font-semibold">
-                    <span className="text-[#2D2124]">&lt;/&gt;</span>
+                  <Link
+                    href="/"
+                    onClick={toggleMenu}
+                    className={`flex items-center gap-2 font-semibold transition-colors ${
+                      pathname === "/" ? "text-[#0F766E]" : "text-[#2D2124]"
+                    }`}
+                  >
+                    <span className={pathname === "/" ? "text-[#0F766E]" : "text-[#2D2124]"}>&lt;/&gt;</span>
                     HOME
                   </Link>
                   <button
@@ -156,9 +262,11 @@ const Header = () => {
                       scrollOrNavigate("coding-bootcamp");
                       toggleMenu();
                     }}
-                    className="flex items-center gap-2 text-[#2D2124] font-semibold"
+                    className={`flex items-center gap-2 font-semibold transition-colors ${
+                      isSectionActive("coding-bootcamp") ? "text-[#0F766E]" : "text-[#2D2124]"
+                    }`}
                   >
-                    <span className="text-[#2D2124]">&lt;/&gt;</span>
+                    <span className={isSectionActive("coding-bootcamp") ? "text-[#0F766E]" : "text-[#2D2124]"}>&lt;/&gt;</span>
                     CODING BOOTCAMP
                   </button>
                   <button
@@ -167,17 +275,31 @@ const Header = () => {
                       scrollOrNavigate("design-stem");
                       toggleMenu();
                     }}
-                    className="flex items-center gap-2 text-[#2D2124] font-semibold"
+                    className={`flex items-center gap-2 font-semibold transition-colors ${
+                      isSectionActive("design-stem") ? "text-[#0F766E]" : "text-[#2D2124]"
+                    }`}
                   >
-                    <span className="text-[#2D2124]">&lt;/&gt;</span>
+                    <span className={isSectionActive("design-stem") ? "text-[#0F766E]" : "text-[#2D2124]"}>&lt;/&gt;</span>
                     DESIGN & STEM
                   </button>
-                  <Link href="/gallery" onClick={toggleMenu} className="flex items-center gap-2 text-[#2D2124] font-semibold">
-                    <span className="text-[#2D2124]">&lt;/&gt;</span>
+                  <Link
+                    href="/gallery"
+                    onClick={toggleMenu}
+                    className={`flex items-center gap-2 font-semibold transition-colors ${
+                      pathname === "/gallery" ? "text-[#0F766E]" : "text-[#2D2124]"
+                    }`}
+                  >
+                    <span className={pathname === "/gallery" ? "text-[#0F766E]" : "text-[#2D2124]"}>&lt;/&gt;</span>
                     OUR GALLERY
                   </Link>
-                  <Link href="/about-us" onClick={toggleMenu} className="flex items-center gap-2 text-[#2D2124] font-semibold">
-                    <span className="text-[#2D2124]">&lt;/&gt;</span>
+                  <Link
+                    href="/about-us"
+                    onClick={toggleMenu}
+                    className={`flex items-center gap-2 font-semibold transition-colors ${
+                      pathname === "/about-us" ? "text-[#0F766E]" : "text-[#2D2124]"
+                    }`}
+                  >
+                    <span className={pathname === "/about-us" ? "text-[#0F766E]" : "text-[#2D2124]"}>&lt;/&gt;</span>
                     ABOUT US
                   </Link>
                 </div>
