@@ -1,4 +1,5 @@
 import Footer from "@/components/Footer";
+import HeroSection from "@/components/views/HeroSection";
 import AboutSection from "@/components/views/AboutSection";
 import Bootcamp from "@/components/views/Bootcamp";
 import CodingClassSection from "@/components/views/CodingClassSection";
@@ -9,6 +10,7 @@ import React from "react";
 const RootPage = () => {
   return (
     <div>
+      <HeroSection />
       <AboutSection />
       <CodingClassSection />
       <Bootcamp />
