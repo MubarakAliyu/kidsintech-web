@@ -7,12 +7,19 @@ import Brain from "../../../public/assets/images/brain.svg";
 import AboutSectionImg1 from "../../../public/assets/images/aboutSectionImg1.png";
 import AboutSectionImg2 from "../../../public/assets/images/aboutSectionImg2.png";
 import AboutSectionImg3 from "../../../public/assets/images/aboutSectionImg3.png";
+import AboutSectionArr1 from "../../../public/assets/images/aboutSectionArr1.svg";
+import AboutSectionArr2 from "../../../public/assets/images/aboutSectionArr2.svg";
 import AnimatedSection, { AnimatedItem } from "../ui/AnimatedSection";
 
 const AboutSection = () => {
   return (
     <section className="bg-[#EDF4D6] px-4 sm:px-8 lg:px-[160px] py-12 sm:py-16 lg:py-[96px]">
       <AnimatedSection className="container flex flex-col items-center gap-6 sm:gap-8 relative">
+        {/* Decorative Arrow 1 - Points to title */}
+        <div className="hidden lg:block absolute -top-[18%] right-[0%]">
+          <Image src={AboutSectionArr1} alt="Decorative Arrow" width={270} height={76} className="w-[270px] h-[76px] " />
+        </div>
+
         <div className="flex flex-col lg:flex-row items-center lg:items-start gap-6 lg:gap-8">
           {/* Left Image */}
           <AnimatedItem
@@ -75,6 +82,11 @@ const AboutSection = () => {
           >
             <Image src={AboutSectionImg2} alt="Gallery image 2" className="w-full h-full object-cover" placeholder="blur" />
           </AnimatedItem>
+        </div>
+
+        {/* Decorative Arrow 2 - Points to content */}
+        <div className="hidden lg:block absolute -bottom-[15%] lg:left-[2%] 2xl:left-[5%]">
+          <Image src={AboutSectionArr2} alt="Decorative Arrow" width={374} height={152} className="w-[374px] h-[152px]" />
         </div>
       </AnimatedSection>
     </section>

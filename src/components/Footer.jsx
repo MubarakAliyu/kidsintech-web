@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -8,7 +9,25 @@ import Facebook from "../../public/assets/images/facebook.svg";
 import Instagram from "../../public/assets/images/instagram.svg";
 import X from "../../public/assets/images/X.svg";
 
+import { useCallback } from "react";
+import { usePathname, useRouter } from "next/navigation";
+
 const Footer = () => {
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const scrollOrNavigate = useCallback(
+    (sectionId) => {
+      if (pathname === "/") {
+        const el = document.getElementById(sectionId);
+        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+      } else {
+        router.push(`/`);
+      }
+    },
+    [pathname, router]
+  );
+
   return (
     <footer className="bg-[#401D26] px-8 lg:px-[160px] py-[96px] ">
       <div className="container flex flex-col gap-14 items-cente text-white">
@@ -37,16 +56,16 @@ const Footer = () => {
           <div className=" hidden md:block border-l border-white h-[120px]"></div>
 
           {/* Navigation Links */}
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2 self-start">
             <Link href="/" className="text-white hover:text-yellow-400 transition-colors">
               Home
             </Link>
-            <Link href="/coding-bootcamp" className="text-white hover:text-yellow-400 transition-colors">
+            <button type="button" onClick={() => scrollOrNavigate("coding-bootcamp")} className="text-white hover:text-yellow-400 transition-colors">
               Coding Bootcamp
-            </Link>
-            <Link href="/design-stem-bootcamp" className="text-white hover:text-yellow-400 transition-colors">
+            </button>
+            <button type="button" onClick={() => scrollOrNavigate("design-stem")} className="text-white hover:text-yellow-400 transition-colors">
               Design & STEM Bootcamp
-            </Link>
+            </button>
           </div>
 
           <div className="flex flex-col gap-2">

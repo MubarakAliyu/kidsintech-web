@@ -22,7 +22,7 @@ const polySans = localFont({
 
 export const metadata = {
   title: "Kids in Tech",
-  description: "",
+  description: "Kids ",
 };
 
 export default function RootLayout({ children }) {

@@ -27,7 +27,7 @@ const CodingClassSection = () => {
         />
 
         {/* Decorative Arrow 1 - Points to title */}
-        <div className="hidden lg:block absolute -top-[6%] lg:left-[0%] 2xl:left-[11%]">
+        <div className="hidden lg:block absolute -top-[6%] lg:left-[2%] 2xl:left-[4%]">
           <Image src={CodingArr1} alt="Decorative Arrow" width={402} height={168} className="w-[402px] h-[168px]" />
         </div>
 
