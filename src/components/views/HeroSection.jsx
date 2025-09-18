@@ -34,7 +34,7 @@ const float = {
 
 const HeroSection = () => {
   return (
-    <section className="bg-[#FFF7F1] px-4 sm:px-8 lg:px-[160px] py-12 pb-24 pt-24 lg:pt-[256px]">
+    <section className="bg-[#FFF7F1] px-4 sm:px-8 lg:px-[160px] py-24">
       <article className="container flex flex-col items-center gap-14 relative">
         {/* Decorative Arrow 1 */}
         <motion.div variants={float} initial="hidden" animate="visible" className="hidden lg:block absolute -top-[3%] right-[0%]">
