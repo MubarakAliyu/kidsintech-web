@@ -9,6 +9,7 @@ import heroImg1 from "../../../public/assets/images/heroImg1.png";
 import heroImg2 from "../../../public/assets/images/heroImg2.png";
 import heroImg3 from "../../../public/assets/images/heroImg3.png";
 import heroImg4 from "../../../public/assets/images/heroImg4.png";
+import heroImg14 from "../../../public/assets/images/heroImg1&4.png";
 import HeroArr1 from "../../../public/assets/images/heroArr1.svg";
 import HeroArr2 from "../../../public/assets/images/heroArr2.svg";
 
@@ -33,7 +34,7 @@ const float = {
 
 const HeroSection = () => {
   return (
-    <section className="bg-[#FFF7F1] px-4 sm:px-8 lg:px-[160px] py-12 sm:py-16 lg:py-[96px]">
+    <section className="bg-[#FFF7F1] px-4 sm:px-8 lg:px-[160px] py-12 pb-24 pt-24 lg:pt-[256px]">
       <article className="container flex flex-col items-center gap-14 relative">
         {/* Decorative Arrow 1 */}
         <motion.div variants={float} initial="hidden" animate="visible" className="hidden lg:block absolute -top-[3%] right-[0%]">
@@ -81,25 +82,6 @@ const HeroSection = () => {
           <Image src={HeroArr2} alt="Decorative Arrow" width={158} height={401} />
         </motion.div>
 
-        {/* Hero Images */}
-        {/* <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          {[heroImg1, heroImg2, heroImg3, heroImg4].map((img, i) => (
-            <motion.figure
-              key={i}
-              variants={fadeUp}
-              custom={i}
-              className="lg:block hidden w-full max-w-sm rounded-2xl overflow-hidden cursor-pointer group transform transition-transform duration-300 ease-in-out hover:scale-105"
-            >
-              <Image src={img} alt={`Hero Image ${i + 1}`} className="w-full h-full object-cover" placeholder="blur" />
-            </motion.figure>
-          ))}
-        </motion.div> */}
-
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Hero Image 1 */}
           <motion.figure
@@ -120,6 +102,24 @@ const HeroSection = () => {
             />
           </motion.figure>
 
+          <motion.figure
+            variants={fadeUp}
+            custom={0}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="lg:hidden block w-full max-w-sm rounded-2xl overflow-hidden cursor-pointer group transform transition-transform duration-300 ease-in-out hover:scale-105"
+          >
+            <Image
+              src={heroImg14}
+              alt="Hero Image 1 & 4"
+              width={358}
+              height={476}
+              className="w-full h-auto object-cover"
+              placeholder="blur"
+            />
+          </motion.figure>
+
           {/* Hero Image 2 & 3 stacked */}
           <div className="flex flex-col items-center justify-center gap-6">
             <motion.figure
@@ -128,7 +128,7 @@ const HeroSection = () => {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="lg:block hidden w-full max-w-sm rounded-2xl overflow-hidden cursor-pointer group transform transition-transform duration-300 ease-in-out hover:scale-105"
+              className="w-full max-w-xs rounded-2xl overflow-hidden cursor-pointer group transform transition-transform duration-300 ease-in-out hover:scale-105"
             >
               <Image
                 src={heroImg2}
@@ -146,7 +146,7 @@ const HeroSection = () => {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="lg:block hidden w-full max-w-sm rounded-2xl overflow-hidden cursor-pointer group transform transition-transform duration-300 ease-in-out hover:scale-105"
+              className=" w-full max-w-xs rounded-2xl overflow-hidden cursor-pointer group transform transition-transform duration-300 ease-in-out hover:scale-105"
             >
               <Image
                 src={heroImg3}

@@ -7,6 +7,8 @@ import { motion } from "framer-motion";
 import Rocket from "../../../public/assets/images/rocket.svg";
 import Heading from "../../../public/assets/images/aboutHeading.png";
 import TeamHeading from "../../../public/assets/images/teamHeading.png";
+import TeachHeading from "../../../public/assets/images/teachHeading.png";
+import TeachHeadingMob from "../../../public/assets/images/teachHeadingMob.png";
 
 import GalleryImg1 from "../../../public/assets/images/aboutImg1.png";
 import GalleryImgMob1 from "../../../public/assets/images/aboutImg1Mobile.png";
@@ -195,18 +197,18 @@ const AboutUsPage = () => {
       {/* What We Do Section */}
       <section className="bg-[#F6F8DC] px-4 sm:px-8 lg:px-[160px] py-12 sm:py-16 lg:py-[96px]">
         <motion.article
-          className="container flex flex-col items-center gap-14 relative"
+          className="container flex flex-col items-center gap-2 relative"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.15 }}
         >
-          <motion.h2
-            variants={fadeUp}
-            custom={0}
-            className="text-center text-4xl md:text-5xl lg:text-[68px] font-bold text-[#C8D295] text-shadow-[6px_3px_0px_#422110]"
-          >
-            What We teach
-          </motion.h2>
+          <motion.div variants={fadeUp} custom={0}>
+            <Image src={TeachHeading} alt="Teach Heading" width={496} height={70} className="w-[496px] h-[70px] hidden lg:block" />
+          </motion.div>
+
+          <motion.div variants={fadeUp} custom={0}>
+            <Image src={TeachHeadingMob} alt="Teach Heading" width={358} height={70} className="w-[358px] h-[80px] block lg:hidden" />
+          </motion.div>
 
           <motion.div variants={fadeUp} custom={1} className="flex flex-col items-start  sm:-gap-4 w-full">
             <div className="relative overflow-hidden w-full sm:w-fit">
@@ -308,7 +310,7 @@ const AboutUsPage = () => {
           viewport={{ once: true, amount: 0.15 }}
         >
           <motion.div variants={fadeUp} custom={0}>
-            <Image src={TeamHeading} alt="Team Heading" width={913} height={70} className="w-[325px] lg:w-[500px] h-[70px] lg:h-[70px]" />
+            <Image src={TeamHeading} alt="Team Heading" width={913} height={70} className="w-[325px] lg:w-[500px] h-auto lg:h-[70px]" />
           </motion.div>
 
           <motion.div variants={fadeUp} custom={1} className="flex flex-col items-start -space-x-4">
