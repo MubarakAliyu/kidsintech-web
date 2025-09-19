@@ -49,7 +49,13 @@ const HeroSection = () => {
           viewport={{ once: true }}
           variants={fadeUp}
         >
-          <Image src={Heading} alt="heading" width={913} height={228} className="w-[325px] lg:w-[913px] h-[80px] lg:h-[202px]" />
+          <Image
+            src={Heading}
+            alt="Kids in Tech - Empowering Children Through Technology Education"
+            width={913}
+            height={228}
+            className="w-[325px] lg:w-[913px] h-[80px] lg:h-[202px]"
+          />
 
           <motion.div
             variants={fadeUp}
@@ -66,7 +72,7 @@ const HeroSection = () => {
               href="https://wa.me/2347067834186"
               className="flex p-6 justify-center items-center gap-2 rounded-[80px] bg-[#A41C3F] text-[#F1EAEB] font-bold text-xl lg:text-[28px] transition-all duration-300 ease-in-out hover:bg-[#2D2124] hover:scale-105"
             >
-              <Image src={Rocket} alt="rocket" width={22} height={21} />
+              <Image src={Rocket} alt="Start Learning Today - Rocket Icon" width={22} height={21} />
               Start Learning Today!
             </Link>
           </motion.div>
@@ -94,7 +100,7 @@ const HeroSection = () => {
           >
             <Image
               src={heroImg1}
-              alt="Sponsor Image 1"
+              alt="Children learning coding and technology at Kids in Tech bootcamp"
               width={358}
               height={476}
               className="w-full h-auto object-cover"
@@ -112,7 +118,7 @@ const HeroSection = () => {
           >
             <Image
               src={heroImg14}
-              alt="Hero Image 1 & 4"
+              alt="Kids in Tech students working on creative coding projects together"
               width={358}
               height={476}
               className="w-full h-auto object-cover"
@@ -132,7 +138,7 @@ const HeroSection = () => {
             >
               <Image
                 src={heroImg2}
-                alt="Sponsor Image 2"
+                alt="Young students engaged in hands-on STEM learning activities"
                 width={500}
                 height={500}
                 className="w-full h-full object-cover"
@@ -150,7 +156,7 @@ const HeroSection = () => {
             >
               <Image
                 src={heroImg3}
-                alt="Sponsor Image 3"
+                alt="Children collaborating on digital design and creative technology projects"
                 width={500}
                 height={500}
                 className="w-full h-full object-cover"
@@ -170,7 +176,7 @@ const HeroSection = () => {
           >
             <Image
               src={heroImg4}
-              alt="Sponsor Image 4"
+              alt="Kids in Tech bootcamp participants showcasing their coding and technology achievements"
               width={331}
               height={440}
               className="w-full h-auto object-cover"

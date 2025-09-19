@@ -1,4 +1,5 @@
 "use client";
+import React, { useState, useEffect } from "react";
 import FounderNoteSection from "@/components/views/FounderNoteSection";
 import Heading from "../../../public/assets/images/galleryHeading.png";
 import GalleryPic1 from "../../../public/assets/images/gallerypic1.png";
@@ -19,10 +20,10 @@ import GalleryPic15 from "../../../public/assets/images/gallerypic15.png";
 import GalleryPic16 from "../../../public/assets/images/gallerypic16.png";
 
 import Image from "next/image";
-import React from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { X, ChevronLeft, ChevronRight } from "lucide-react"; // Lucide icons
 
-// Fade-up animation
+// Animation
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
   visible: (i) => ({
@@ -52,6 +53,30 @@ const GalleryPage = () => {
     GalleryPic16,
   ];
 
+  const [isOpen, setIsOpen] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const openModal = (index) => {
+    setCurrentIndex(index);
+    setIsOpen(true);
+  };
+
+  const closeModal = () => setIsOpen(false);
+  const nextImage = () => setCurrentIndex((prev) => (prev + 1) % galleryImages.length);
+  const prevImage = () => setCurrentIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
+
+  // Keyboard navigation
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKey = (e) => {
+      if (e.key === "Escape") closeModal();
+      if (e.key === "ArrowRight") nextImage();
+      if (e.key === "ArrowLeft") prevImage();
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [isOpen]);
+
   return (
     <div>
       <section className="bg-[#FFF7F1] px-4 sm:px-8 lg:px-[160px] py-12 sm:py-16 lg:py-[96px]">
@@ -59,13 +84,7 @@ const GalleryPage = () => {
           {/* Header */}
           <div className="flex flex-col items-center lg:-space-y-4">
             {/* Heading Image */}
-            <motion.div
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              custom={0} // first
-            >
+            <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0}>
               <Image src={Heading} alt="heading" width={913} height={202} className="w-[325px] lg:w-[913px] h-[80px] lg:h-[202px]" />
             </motion.div>
 
@@ -75,7 +94,7 @@ const GalleryPage = () => {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              custom={5} // second
+              custom={5}
               className="bg-white py-1.5 px-2.5 lg:px-8 lg:py-4 gap-2.5 flex items-center rounded-3xl lg:rounded-full"
             >
               <p className="text-base sm:text-lg lg:text-xl text-center font-normal text-[#2D2124]">
@@ -96,6 +115,7 @@ const GalleryPage = () => {
                 viewport={{ once: true }}
                 custom={i}
                 className="mb-4 sm:mb-6 rounded-2xl overflow-hidden cursor-pointer group break-inside-avoid"
+                onClick={() => openModal(i)}
               >
                 <Image
                   src={img}
@@ -109,8 +129,69 @@ const GalleryPage = () => {
         </article>
       </section>
 
-      {/* Founder note section after gallery */}
+      {/* Founder note */}
       <FounderNoteSection />
+
+      {/* Modal Preview */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-95"
+            onClick={closeModal}
+          >
+            {/* Close button */}
+            <button
+              onClick={closeModal}
+              className="absolute top-6 right-6 text-white p-2 rounded-full hover:bg-white/20 transition cursor-pointer"
+            >
+              <X size={32} />
+            </button>
+
+            {/* Prev */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                prevImage();
+              }}
+              className="absolute left-6 top-1/2 -translate-y-1/2 text-white p-2 rounded-full hover:bg-white/20 transition cursor-pointer"
+            >
+              <ChevronLeft size={40} />
+            </button>
+
+            {/* Next */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                nextImage();
+              }}
+              className="absolute right-6 top-1/2 -translate-y-1/2 text-white p-2 rounded-full hover:bg-white/20 transition cursor-pointer"
+            >
+              <ChevronRight size={40} />
+            </button>
+
+            {/* Image */}
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="max-w-4xl max-h-[85vh] mx-auto"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Image
+                src={galleryImages[currentIndex]}
+                alt={`Gallery image ${currentIndex + 1}`}
+                className="w-auto h-auto max-h-[85vh] rounded-lg object-contain"
+              />
+              <p className="text-white text-center mt-3 text-sm">
+                {currentIndex + 1} / {galleryImages.length}
+              </p>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
