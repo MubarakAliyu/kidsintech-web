@@ -121,8 +121,8 @@ const Header = () => {
             scrollOrNavigate("coding-bootcamp");
             onClick && onClick();
           }}
-          className={`text-left lg:text-center transition-colors ${
-            isSectionActive("coding-bootcamp") ? "text-[#0F766E] font-semibold" : "text-[#2D2124] hover:text-[#0F766E]"
+          className={`text-left lg:text-center transition-colors text-xl ${
+            isSectionActive("coding-bootcamp") ? "text-[#0F766E]" : "text-[#2D2124] hover:text-[#0F766E]"
           }`}
         >
           Coding Bootcamp
@@ -135,8 +135,8 @@ const Header = () => {
             scrollOrNavigate("design-stem");
             onClick && onClick();
           }}
-          className={`text-left lg:text-center transition-colors ${
-            isSectionActive("design-stem") ? "text-[#0F766E] font-semibold" : "text-[#2D2124] hover:text-[#0F766E]"
+          className={`text-left lg:text-center transition-colors text-xl ${
+            isSectionActive("design-stem") ? "text-[#0F766E]" : "text-[#2D2124] hover:text-[#0F766E]"
           }`}
         >
           Design & STEM
@@ -146,8 +146,8 @@ const Header = () => {
         <Link
           href="/gallery"
           onClick={onClick}
-          className={`transition-colors ${
-            pathname === "/gallery" ? "text-[#0F766E] font-semibold" : "text-[#2D2124] hover:text-[#0F766E]"
+          className={`transition-colors text-xl ${
+            pathname === "/gallery" ? "text-[#0F766E]" : "text-[#2D2124] hover:text-[#0F766E]"
           }`}
         >
           Our Gallery
@@ -157,8 +157,8 @@ const Header = () => {
         <Link
           href="/about-us"
           onClick={onClick}
-          className={`transition-colors ${
-            pathname === "/about-us" ? "text-[#0F766E] font-semibold" : "text-[#2D2124] hover:text-[#0F766E]"
+          className={`transition-colors text-xl ${
+            pathname === "/about-us" ? "text-[#0F766E]" : "text-[#2D2124] hover:text-[#0F766E]"
           }`}
         >
           About us
@@ -262,7 +262,7 @@ const Header = () => {
                       scrollOrNavigate("coding-bootcamp");
                       toggleMenu();
                     }}
-                    className={`flex items-center gap-2 font-normal transition-colors ${
+                    className={`flex items-center gap-2 font-normal transition-colors text-xl ${
                       isSectionActive("coding-bootcamp") ? "text-[#0F766E]" : "text-[#2D2124]"
                     }`}
                   >
@@ -275,7 +275,7 @@ const Header = () => {
                       scrollOrNavigate("design-stem");
                       toggleMenu();
                     }}
-                    className={`flex items-center gap-2 font-normal transition-colors ${
+                    className={`flex items-center gap-2 font-normal transition-colors text-xl ${
                       isSectionActive("design-stem") ? "text-[#0F766E]" : "text-[#2D2124]"
                     }`}
                   >
@@ -285,7 +285,7 @@ const Header = () => {
                   <Link
                     href="/gallery"
                     onClick={toggleMenu}
-                    className={`flex items-center gap-2 font-normal transition-colors ${
+                    className={`flex items-center gap-2 font-normal transition-colors text-xl ${
                       pathname === "/gallery" ? "text-[#0F766E]" : "text-[#2D2124]"
                     }`}
                   >
@@ -295,7 +295,7 @@ const Header = () => {
                   <Link
                     href="/about-us"
                     onClick={toggleMenu}
-                    className={`flex items-center gap-2 font-normal transition-colors ${
+                    className={`flex items-center gap-2 font-normal transition-colors text-xl ${
                       pathname === "/about-us" ? "text-[#0F766E]" : "text-[#2D2124]"
                     }`}
                   >
