@@ -245,11 +245,11 @@ const Header = () => {
 
               {/* Mobile Nav Links */}
               <nav className="mt-2">
-                <div className="flex flex-col gap-5">
+                <div className="flex flex-col gap-8">
                   <Link
                     href="/"
                     onClick={toggleMenu}
-                    className={`flex items-center gap-2 font-semibold transition-colors ${
+                    className={`flex items-center gap-2 font-normal transition-colors ${
                       pathname === "/" ? "text-[#0F766E]" : "text-[#2D2124]"
                     }`}
                   >
@@ -262,7 +262,7 @@ const Header = () => {
                       scrollOrNavigate("coding-bootcamp");
                       toggleMenu();
                     }}
-                    className={`flex items-center gap-2 font-semibold transition-colors ${
+                    className={`flex items-center gap-2 font-normal transition-colors ${
                       isSectionActive("coding-bootcamp") ? "text-[#0F766E]" : "text-[#2D2124]"
                     }`}
                   >
@@ -275,7 +275,7 @@ const Header = () => {
                       scrollOrNavigate("design-stem");
                       toggleMenu();
                     }}
-                    className={`flex items-center gap-2 font-semibold transition-colors ${
+                    className={`flex items-center gap-2 font-normal transition-colors ${
                       isSectionActive("design-stem") ? "text-[#0F766E]" : "text-[#2D2124]"
                     }`}
                   >
@@ -285,7 +285,7 @@ const Header = () => {
                   <Link
                     href="/gallery"
                     onClick={toggleMenu}
-                    className={`flex items-center gap-2 font-semibold transition-colors ${
+                    className={`flex items-center gap-2 font-normal transition-colors ${
                       pathname === "/gallery" ? "text-[#0F766E]" : "text-[#2D2124]"
                     }`}
                   >
@@ -295,7 +295,7 @@ const Header = () => {
                   <Link
                     href="/about-us"
                     onClick={toggleMenu}
-                    className={`flex items-center gap-2 font-semibold transition-colors ${
+                    className={`flex items-center gap-2 font-normal transition-colors ${
                       pathname === "/about-us" ? "text-[#0F766E]" : "text-[#2D2124]"
                     }`}
                   >

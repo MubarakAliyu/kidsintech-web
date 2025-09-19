@@ -56,7 +56,7 @@ const Footer = () => {
           <div className=" hidden md:block border-l border-white h-[120px]"></div>
 
           {/* Navigation Links */}
-          <div className="flex flex-col gap-2 self-start">
+          <div className="flex flex-col gap-2 self-start items-start">
             <Link href="/" className="text-white hover:text-yellow-400 transition-colors">
               Home
             </Link>
@@ -94,7 +94,7 @@ const Footer = () => {
         {/* Bottom Section */}
         <div className="flex flex-col md:flex-row items-start lg:items-center justify-between gap-8">
           {/* Copyright */}
-          <div className="text-sm text-gray-300">COPYRIGHT 2025 ALL RIGHTS RESERVED KIDS IN TECH</div>
+          <div className="text-2xl text-white">COPYRIGHT 2025 ALL RIGHTS RESERVED KIDS IN TECH</div>
 
           {/* Social Media Icons */}
           <div className="flex items-start justify-center gap-6">

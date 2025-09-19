@@ -150,22 +150,22 @@ const CodingClassSection = () => {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="flex flex-col md:flex-row p-6 sm:p-8 justify-start items-start gap-6 sm:gap-8 rounded-4xl bg-[#EEF3E9]"
+              className="flex flex-col md:flex-row p-6 sm:p-8 justify-start items-start gap-6 sm:gap-6 rounded-4xl bg-[#EEF3E9]"
             >
               {/* payment, duration, class date */}
               <div>
-                <p className="text-[#2C2F28] font-light">Payment</p>
-                <p className="text-[#34A33F] font-bold">₦25,000</p>
+                <p className="text-[#2C2F28] font-light text-2xl mb-1">Payment</p>
+                <p className="text-[#34A33F] font-bold text-xl lg:text-2xl">₦25,000</p>
               </div>
               <div className="border-t md:border-l border-black w-full md:w-px md:h-[64px]" />
               <div>
-                <p className="text-[#2C2F28] font-light">Duration</p>
-                <p className="text-[#34A33F] font-bold">3 Weeks</p>
+                <p className="text-[#2C2F28] font-light text-2xl mb-1">Duration</p>
+                <p className="text-[#34A33F] font-bold text-xl lg:text-2xl">3 Weeks</p>
               </div>
               <div className="border-t md:border-l border-black w-full md:w-px md:h-[64px]" />
               <div>
-                <p className="text-[#2C2F28] font-light">Class Date</p>
-                <p className="text-[#34A33F] font-bold">AUG 6th - 24th 2025</p>
+                <p className="text-[#2C2F28] font-light text-2xl mb-1">Class Date</p>
+                <p className="text-[#214A25] font-bold text-xl lg:text-2xl">AUG 6th - 24th 2025</p>
               </div>
             </motion.div>
 

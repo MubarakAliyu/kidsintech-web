@@ -95,7 +95,7 @@ const LearningOutcomeSection = () => {
           </motion.div>
 
           {/* 4 Grid Items */}
-          <motion.div variants={staggerContainer} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-0 w-full relative">
+          <motion.div variants={staggerContainer} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 w-full relative">
             {[
               { img: TechCreativity, text: "Tech & Creativity Skills" },
               {

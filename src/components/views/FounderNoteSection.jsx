@@ -101,10 +101,10 @@ const FounderNoteSection = () => {
               </figure>
 
               {/* Founder Info */}
-              <div className="flex flex-col gap-1 items-start">
-                <p className="text-lg sm:text-xl lg:text-2xl text-[#401D26] font-normal">Aliyu</p>
-                <p className="text-lg sm:text-xl lg:text-2xl text-[#401D26] font-normal">Mubarak</p>
-                <p className="text-lg sm:text-xl lg:text-2xl text-[#401D26] font-bold">Founder @ Kids In Tech</p>
+              <div className="flex flex-col items-start">
+                <p className="text-lg sm:text-xl lg:text-2xl text-[#401D26] font-normal leading-6">Aliyu</p>
+                <p className="text-lg sm:text-xl lg:text-2xl text-[#401D26] font-normal leading-6">Mubarak</p>
+                <p className="text-lg sm:text-xl lg:text-2xl text-[#401D26] font-bold leading-6">Founder @ Kids In Tech</p>
               </div>
             </motion.div>
           </motion.div>
