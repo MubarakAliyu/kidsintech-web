@@ -102,14 +102,18 @@ const AboutSponsorSection = () => {
           </div>
 
           {/* Pitch Deck Button */}
-          <motion.div
+          <motion.a
+            href="/pitch-deck-[kids-in-tech].pdf"
+            download={true}
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="w-fit flex justify-center items-center gap-3 rounded-3xl bg-[#A4431C] p-6 transition-all duration-300 ease-in-out hover:bg-[#2D2124] cursor-pointer"
           >
             <CloudDownload className="text-white w-6 h-6" />
             <p className="text-xl lg:text-[28px] text-white font-bold">Download Our Pitch Deck!</p>
-          </motion.div>
+          </motion.a>
         </motion.div>
 
         {/* FORM */}

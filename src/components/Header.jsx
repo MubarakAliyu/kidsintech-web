@@ -249,7 +249,7 @@ const Header = () => {
                   <Link
                     href="/"
                     onClick={toggleMenu}
-                    className={`flex items-center gap-2 font-normal transition-colors ${
+                    className={`flex items-center gap-2 font-normal transition-colors text-xl ${
                       pathname === "/" ? "text-[#0F766E]" : "text-[#2D2124]"
                     }`}
                   >
