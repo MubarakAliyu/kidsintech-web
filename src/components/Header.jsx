@@ -183,7 +183,7 @@ const Header = () => {
         {/* Desktop CTA */}
         <div className="hidden lg:flex items-center">
           <Link
-            href="https://wa.me/2347067834186"
+            href="https://chat.whatsapp.com/LrBRk3G4qSaFBcmNSFILEC?mode=ems_copy_t"
             target="_blank"
             className="inline-flex items-center gap-2 rounded-full bg-[#1CA48E] text-white px-5 py-3 font-semibold shadow-sm hover:brightness-95 transition"
           >
@@ -308,7 +308,7 @@ const Header = () => {
               {/* CTAs */}
               <div className="mt-auto flex flex-col gap-4">
                 <Link
-                  href="https://wa.me/2347067834186"
+                  href="https://chat.whatsapp.com/LrBRk3G4qSaFBcmNSFILEC?mode=ems_copy_t"
                   target="_blank"
                   className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-[#1DA693] text-white px-5 py-3 font-semibold shadow-sm hover:brightness-95 transition"
                 >
@@ -316,7 +316,7 @@ const Header = () => {
                   Join Us
                 </Link>
                 <Link
-                  href="#register"
+                  href="https://chat.whatsapp.com/LrBRk3G4qSaFBcmNSFILEC?mode=ems_copy_t"
                   onClick={toggleMenu}
                   className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-[#A41C3F] text-white px-5 py-3 font-semibold shadow-sm hover:brightness-95 transition"
                 >

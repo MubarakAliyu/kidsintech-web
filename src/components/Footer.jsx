@@ -36,10 +36,13 @@ const Footer = () => {
           <h2 className="text-3xl md:text-5xl lg:text-[64px] leading-normal font-bold text-white text-center">
             Coding Bootcamp is now open!
           </h2>
-          <button className="bg-[#A41C3F] hover:bg-[#2D2124] transition-all duration-300 ease-in-out flex items-center gap-2 justify-center p-6 rounded-[80px] text-[#F1EAEB] text-xl lg:text-2xl font-bold w-full cursor-pointer">
+          <Link
+            href="https://chat.whatsapp.com/LrBRk3G4qSaFBcmNSFILEC?mode=ems_copy_t"
+            className="bg-[#A41C3F] hover:bg-[#2D2124] transition-all duration-300 ease-in-out flex items-center gap-2 justify-center p-6 rounded-[80px] text-[#F1EAEB] text-xl lg:text-2xl font-bold w-full cursor-pointer"
+          >
             <Image src={Rocket} alt="Rocket" width={20} height={20} />
             Register Now!
-          </button>
+          </Link>
         </div>
 
         {/* Separator Line */}
@@ -60,10 +63,18 @@ const Footer = () => {
             <Link href="/" className="text-white hover:text-yellow-400 transition-colors">
               Home
             </Link>
-            <button type="button" onClick={() => scrollOrNavigate("coding-bootcamp")} className="text-white hover:text-yellow-400 transition-colors">
+            <button
+              type="button"
+              onClick={() => scrollOrNavigate("coding-bootcamp")}
+              className="text-white hover:text-yellow-400 transition-colors"
+            >
               Coding Bootcamp
             </button>
-            <button type="button" onClick={() => scrollOrNavigate("design-stem")} className="text-white hover:text-yellow-400 transition-colors">
+            <button
+              type="button"
+              onClick={() => scrollOrNavigate("design-stem")}
+              className="text-white hover:text-yellow-400 transition-colors"
+            >
               Design & STEM Bootcamp
             </button>
           </div>
@@ -98,16 +109,19 @@ const Footer = () => {
 
           {/* Social Media Icons */}
           <div className="flex items-start justify-center gap-6">
-            <a href="#" className="text-white hover:text-yellow-400 transition-colors">
+            <a
+              href="https://chat.whatsapp.com/LrBRk3G4qSaFBcmNSFILEC?mode=ems_copy_t"
+              className="text-white hover:text-yellow-400 transition-colors"
+            >
               <Image src={Whatsapp} alt="WhatsApp" width={24} height={24} />
             </a>
-            <a href="#" className="text-white hover:text-yellow-400 transition-colors">
+            <a href="https://web.facebook.com/profile.php?id=61578715182203" className="text-white hover:text-yellow-400 transition-colors">
               <Image src={Facebook} alt="Facebook" width={24} height={24} />
             </a>
-            <a href="#" className="text-white hover:text-yellow-400 transition-colors">
+            <a href="https://www.instagram.com/kidsintechkb/" className="text-white hover:text-yellow-400 transition-colors">
               <Image src={Instagram} alt="Instagram" width={24} height={24} />
             </a>
-            <a href="#" className="text-white hover:text-yellow-400 transition-colors">
+            <a href="https://x.com/kidsintechkb" className="text-white hover:text-yellow-400 transition-colors">
               <Image src={X} alt="X (Twitter)" width={24} height={24} />
             </a>
           </div>
