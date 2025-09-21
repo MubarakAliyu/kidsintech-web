@@ -10,14 +10,12 @@
     "format": "biome format --write"
   },
   "dependencies": {
-    "fast-glob": "^3.3.3",
     "lucide-react": "^0.544.0",
     "motion": "^12.23.12",
     "next": "15.5.3",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "react-intersection-observer": "^9.16.0",
-    "sharp": "^0.34.4"
+    "react-intersection-observer": "^9.16.0"
   },
   "devDependencies": {
     "@biomejs/biome": "2.2.0",
