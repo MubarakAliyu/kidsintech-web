@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Image from "next/image";
 import { CloudDownload } from "lucide-react";
 import { motion } from "framer-motion";
@@ -8,6 +8,8 @@ import SponsorHeading from "../../../public/assets/images/sponsorHeading.avif";
 import SponsorImg1 from "../../../public/assets/images/sponsor1.avif";
 import SponsorImg2 from "../../../public/assets/images/sponsor2.avif";
 import SponsorImg3 from "../../../public/assets/images/sponsor3.avif";
+import emailjs from "@emailjs/browser";
+import { toast } from "react-toastify";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 50 },
@@ -22,6 +24,8 @@ const staggerContainer = {
 };
 
 const AboutSponsorSection = () => {
+  const form = useRef();
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -39,9 +43,22 @@ const AboutSponsorSection = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+    setLoading(true); // Start loading
+    try {
+      const result = "";
+      // const result = await emailjs.sendForm("service_ooxtxb7", "template_232zuxf", form.current, "d1SnKC4exhq_cV7SM");
+
+      console.log(result.text);
+      toast.success("Message sent successfully! 🎉");
+      setFormData({ fullName: "", email: "", phone: "", sponsorshipType: "", contactMethod: "", message: "" }); // Reset form
+    } catch (error) {
+      console.log(error.text);
+      toast.error("Failed to send message. Try again.");
+    } finally {
+      setLoading(false); // Stop loading
+    }
   };
 
   return (
@@ -118,7 +135,7 @@ const AboutSponsorSection = () => {
 
         {/* FORM */}
         <motion.div variants={fadeUp} className="w-full">
-          <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+          <form ref={form} onSubmit={handleSubmit} className="flex flex-col gap-6">
             {/* Full Name */}
             <div>
               <label htmlFor="fullName" className="block text-base lg:text-xl font-medium text-[#2D2124] mb-2">
@@ -235,6 +252,7 @@ const AboutSponsorSection = () => {
               type="submit"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              disabled={loading}
               className="w-full bg-[#60A41C] hover:bg-[#2D2124] text-white font-bold p-6 rounded-3xl flex items-center justify-center gap-3 transition-all duration-300 cursor-pointer"
             >
               <Image src={Rocket} alt="Rocket" width={20} height={20} className="w-5 h-5" />

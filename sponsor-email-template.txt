@@ -1,0 +1,24 @@
+Subject: New Sponsor Inquiry - {{fullName}}
+
+Hello Kids in Tech Team,
+
+We have received a new sponsorship inquiry that requires your attention.
+
+SPONSOR DETAILS:
+================
+Name/Organization: {{fullName}}
+Email: {{email}}
+Phone: {{phone}}
+Sponsorship Interest: {{sponsorshipType}}
+Preferred Contact: {{contactMethod}}
+
+MESSAGE:
+========
+{{message}}
+
+ACTION REQUIRED:
+================
+Please follow up with this potential sponsor within 24 hours using their preferred contact method.
+
+Best regards,
+Kids in Tech System
