@@ -5,24 +5,24 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 
 import Rocket from "../../../public/assets/images/rocket.svg";
-import Heading from "../../../public/assets/images/aboutHeading.png";
-import TeamHeading from "../../../public/assets/images/teamHeading.png";
-import TeachHeading from "../../../public/assets/images/teachHeading.png";
-import TeachHeadingMob from "../../../public/assets/images/teachHeadingMob.png";
+import Heading from "../../../public/assets/images/aboutHeading.avif";
+import TeamHeading from "../../../public/assets/images/teamHeading.avif";
+import TeachHeading from "../../../public/assets/images/teachHeading.avif";
+import TeachHeadingMob from "../../../public/assets/images/teachHeadingMob.avif";
 
-import GalleryImg1 from "../../../public/assets/images/aboutImg1.png";
-import GalleryImgMob1 from "../../../public/assets/images/aboutImg1Mobile.png";
-import GalleryImg2 from "../../../public/assets/images/aboutImg2.png";
-import GalleryImg3 from "../../../public/assets/images/aboutImg3.png";
+import GalleryImg1 from "../../../public/assets/images/aboutImg1.avif";
+import GalleryImgMob1 from "../../../public/assets/images/aboutImg1Mobile.avif";
+import GalleryImg2 from "../../../public/assets/images/aboutImg2.avif";
+import GalleryImg3 from "../../../public/assets/images/aboutImg3.avif";
 
-import TechCreativity from "../../../public/assets/images/outcome1.png";
-import CriticalThinking from "../../../public/assets/images/outcome2.png";
-import ConfidenceExpression from "../../../public/assets/images/outcome3.png";
-import CollaborationFun from "../../../public/assets/images/outcome4.png";
+import TechCreativity from "../../../public/assets/images/outcome1.avif";
+import CriticalThinking from "../../../public/assets/images/outcome2.avif";
+import ConfidenceExpression from "../../../public/assets/images/outcome3.avif";
+import CollaborationFun from "../../../public/assets/images/outcome4.avif";
 
-import TeamImg1 from "../../../public/assets/images/team1.png";
-import TeamImg2 from "../../../public/assets/images/team2.png";
-import TeamImg3 from "../../../public/assets/images/team3.png";
+import TeamImg1 from "../../../public/assets/images/team1.avif";
+import TeamImg2 from "../../../public/assets/images/team2.avif";
+import TeamImg3 from "../../../public/assets/images/team3.avif";
 import AboutSponsorSection from "@/components/views/AboutSponsorSection";
 
 // Variant: fade up with custom stagger

@@ -4,10 +4,10 @@ import Image from "next/image";
 import { CloudDownload } from "lucide-react";
 import { motion } from "framer-motion";
 import Rocket from "../../../public/assets/images/rocket.svg";
-import SponsorHeading from "../../../public/assets/images/sponsorHeading.png";
-import SponsorImg1 from "../../../public/assets/images/sponsor1.png";
-import SponsorImg2 from "../../../public/assets/images/sponsor2.png";
-import SponsorImg3 from "../../../public/assets/images/sponsor3.png";
+import SponsorHeading from "../../../public/assets/images/sponsorHeading.avif";
+import SponsorImg1 from "../../../public/assets/images/sponsor1.avif";
+import SponsorImg2 from "../../../public/assets/images/sponsor2.avif";
+import SponsorImg3 from "../../../public/assets/images/sponsor3.avif";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 50 },

@@ -6,9 +6,9 @@ import { motion } from "framer-motion";
 import BigRocket from "../../../public/assets/images/bigRocket.svg";
 import Computer from "../../../public/assets/images/computer.svg";
 import Brain from "../../../public/assets/images/brain.svg";
-import AboutSectionImg1 from "../../../public/assets/images/aboutSectionImg1.png";
-import AboutSectionImg2 from "../../../public/assets/images/aboutSectionImg2.png";
-import AboutSectionImg3 from "../../../public/assets/images/aboutSectionImg3.png";
+import AboutSectionImg1 from "../../../public/assets/images/aboutSectionImg1.avif";
+import AboutSectionImg2 from "../../../public/assets/images/aboutSectionImg2.avif";
+import AboutSectionImg3 from "../../../public/assets/images/aboutSectionImg3.avif";
 import AboutSectionArr1 from "../../../public/assets/images/aboutSectionArr1.svg";
 import AboutSectionArr2 from "../../../public/assets/images/aboutSectionArr2.svg";
 

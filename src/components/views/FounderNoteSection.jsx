@@ -4,9 +4,9 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
-import Heading from "../../../public/assets/images/founderHeading.png";
-import FounderNote from "../../../public/assets/images/founder-note.png";
-import Founder from "../../../public/assets/images/founder.png";
+import Heading from "../../../public/assets/images/founderHeading.avif";
+import FounderNote from "../../../public/assets/images/founder-note.avif";
+import Founder from "../../../public/assets/images/founder.avif";
 import FounderArr1 from "../../../public/assets/images/founder-arr-1.svg";
 import FounderArr2 from "../../../public/assets/images/founder-arr-2.svg";
 

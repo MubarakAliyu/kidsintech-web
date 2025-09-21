@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
-import Heading from "../../../public/assets/images/stemHeading.png";
+import Heading from "../../../public/assets/images/stemHeading.avif";
 import Bootcamp1 from "../../../public/assets/images/bootcamp1.svg";
 import Bootcamp2 from "../../../public/assets/images/bootcamp2.svg";
 import Bootcamp3 from "../../../public/assets/images/bootcamp3.svg";

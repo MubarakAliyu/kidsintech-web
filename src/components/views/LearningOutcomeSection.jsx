@@ -5,11 +5,11 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
-import Heading from "../../../public/assets/images/learningHeading.png";
-import TechCreativity from "../../../public/assets/images/outcome1.png";
-import CriticalThinking from "../../../public/assets/images/outcome2.png";
-import ConfidenceExpression from "../../../public/assets/images/outcome3.png";
-import CollaborationFun from "../../../public/assets/images/outcome4.png";
+import Heading from "../../../public/assets/images/learningHeading.avif";
+import TechCreativity from "../../../public/assets/images/outcome1.avif";
+import CriticalThinking from "../../../public/assets/images/outcome2.avif";
+import ConfidenceExpression from "../../../public/assets/images/outcome3.avif";
+import CollaborationFun from "../../../public/assets/images/outcome4.avif";
 import OutcomeArr1 from "../../../public/assets/images/outcome-arr-1.svg";
 import OutcomeArr2 from "../../../public/assets/images/outcome-arr-2.svg";
 
