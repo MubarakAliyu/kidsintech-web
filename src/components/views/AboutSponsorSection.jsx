@@ -47,8 +47,7 @@ const AboutSponsorSection = () => {
     e.preventDefault();
     setLoading(true); // Start loading
     try {
-      const result = "";
-      // const result = await emailjs.sendForm("service_ooxtxb7", "template_232zuxf", form.current, "d1SnKC4exhq_cV7SM");
+      const result = await emailjs.sendForm("service_4lczy19", "template_232zuxf", form.current, "d1SnKC4exhq_cV7SM");
 
       console.log(result.text);
       toast.success("Message sent successfully! 🎉");
@@ -256,7 +255,7 @@ const AboutSponsorSection = () => {
               className="w-full bg-[#60A41C] hover:bg-[#2D2124] text-white font-bold p-6 rounded-3xl flex items-center justify-center gap-3 transition-all duration-300 cursor-pointer"
             >
               <Image src={Rocket} alt="Rocket" width={20} height={20} className="w-5 h-5" />
-              Become a Sponsor
+              {loading ? "Submitting..." : "Become a Sponsor"}
             </motion.button>
           </form>
         </motion.div>
