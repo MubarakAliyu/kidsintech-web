@@ -5,6 +5,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import StructuredData from "@/components/StructuredData";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const polySans = localFont({
   src: [
@@ -106,6 +108,7 @@ export default function RootLayout({ children }) {
         {process.env.NODE_ENV === "production" && <GoogleAnalytics GA_TRACKING_ID={process.env.NEXT_PUBLIC_GA_ID} />}
       </head>
       <body className={`${polySans.variable} antialiased`}>
+        <ToastContainer position="bottom-right" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} />
         <Header />
         {children}
         <Footer />

@@ -174,7 +174,7 @@ const CodingClassSection = () => {
               <div className="relative overflow-hidden w-fit self-end">
                 <div className="absolute inset-0 bg-[#B4A19A] rounded-tl-[60px] sm:rounded-tl-[80px] lg:rounded-tl-[118px] -skew-x-[5deg] rounded-br-[60px]" />
                 <div className="relative z-10 py-3 sm:py-4 px-4 sm:px-6 lg:px-8">
-                  <p className="font-semibold text-base md:text-lg lg:text-xl xl:text-2xl text-[#F3E9E9]">Coming Soon...</p>
+                  <p className="font-semibold text-base md:text-lg lg:text-xl xl:text-2xl text-[#F3E9E9]">Bootcamp has ended!</p>
                 </div>
               </div>
             </motion.div>

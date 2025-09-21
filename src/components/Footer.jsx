@@ -60,40 +60,40 @@ const Footer = () => {
 
           {/* Navigation Links */}
           <div className="flex flex-col gap-2 self-start items-start">
-            <Link href="/" className="text-white hover:text-yellow-400 transition-colors">
+            <Link href="/" className="text-white hover:text-yellow-400 transition-colors text-xl">
               Home
             </Link>
             <button
               type="button"
               onClick={() => scrollOrNavigate("coding-bootcamp")}
-              className="text-white hover:text-yellow-400 transition-colors"
+              className="text-white hover:text-yellow-400 transition-colors text-xl"
             >
               Coding Bootcamp
             </button>
             <button
               type="button"
               onClick={() => scrollOrNavigate("design-stem")}
-              className="text-white hover:text-yellow-400 transition-colors"
+              className="text-white hover:text-yellow-400 transition-colors text-xl"
             >
               Design & STEM Bootcamp
             </button>
           </div>
 
           <div className="flex flex-col gap-2">
-            <Link href="/about" className="text-white hover:text-yellow-400 transition-colors">
+            <Link href="/about" className="text-white hover:text-yellow-400 transition-colors text-xl">
               About Us
             </Link>
-            <Link href="/gallery" className="text-white hover:text-yellow-400 transition-colors">
+            <Link href="/gallery" className="text-white hover:text-yellow-400 transition-colors text-xl">
               Our Gallery
             </Link>
           </div>
 
           {/* Contact Information */}
           <div className="flex flex-col gap-2">
-            <a href="tel:+2347067834186" className="text-white hover:text-yellow-400 transition-colors">
+            <a href="tel:+2347067834186" className="text-white hover:text-yellow-400 transition-colors text-xl">
               +2347067834186
             </a>
-            <a href="mailto:kidsintech@gmail.com" className="text-white hover:text-yellow-400 transition-colors">
+            <a href="mailto:kidsintech@gmail.com" className="text-white hover:text-yellow-400 transition-colors text-xl">
               kidsintech@gmail.com
             </a>
           </div>
