@@ -31,7 +31,7 @@ const Footer = () => {
   return (
     <footer className="bg-[#401D26] px-8 lg:px-[160px] py-[96px] ">
       <div className="container flex flex-col gap-14 items-cente text-white">
-        {/* Hero/Banner Section */}
+
         <div className="flex flex-col gap-6 items-center">
           <h2 className="text-3xl md:text-5xl lg:text-[60px] leading-normal font-bold text-white text-center">
             Coding Bootcamp 2.0 is now open!
