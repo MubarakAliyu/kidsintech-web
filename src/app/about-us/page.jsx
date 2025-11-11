@@ -65,7 +65,9 @@ const AboutUsPage = () => {
 
             <motion.div variants={fadeUp} custom={2}>
               <Link
-                href="https://wa.me/2347067834186"
+                href="https://docs.google.com/forms/d/e/1FAIpQLSfrCMpHwJW8fi0lHHphHELkkkxyA2tL-rlTK798tdh85blzmw/viewform"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex p-6 justify-center items-center gap-2 rounded-[80px] bg-[#A41C3F] text-[#F1EAEB] font-bold text-xl lg:text-[28px] transition-all duration-300 ease-in-out hover:bg-[#2D2124] cursor-pointer"
               >
                 <Image src={Rocket} alt="gallery" width={22} height={21} className="w-[22px] h-[21px]" />

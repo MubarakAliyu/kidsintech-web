@@ -33,11 +33,13 @@ const Footer = () => {
       <div className="container flex flex-col gap-14 items-cente text-white">
         {/* Hero/Banner Section */}
         <div className="flex flex-col gap-6 items-center">
-          <h2 className="text-3xl md:text-5xl lg:text-[64px] leading-normal font-bold text-white text-center">
-            Coding Bootcamp is now open!
+          <h2 className="text-3xl md:text-5xl lg:text-[60px] leading-normal font-bold text-white text-center">
+            Coding Bootcamp 2.0 is now open!
           </h2>
           <Link
-            href="https://chat.whatsapp.com/LrBRk3G4qSaFBcmNSFILEC?mode=ems_copy_t"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSfrCMpHwJW8fi0lHHphHELkkkxyA2tL-rlTK798tdh85blzmw/viewform"
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-[#A41C3F] hover:bg-[#2D2124] transition-all duration-300 ease-in-out flex items-center gap-2 justify-center p-6 rounded-[80px] text-[#F1EAEB] text-xl lg:text-2xl font-bold w-full cursor-pointer"
           >
             <Image src={Rocket} alt="Rocket" width={20} height={20} />

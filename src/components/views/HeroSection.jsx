@@ -69,7 +69,9 @@ const HeroSection = () => {
 
           <motion.div variants={fadeUp} custom={2}>
             <Link
-              href="https://chat.whatsapp.com/LrBRk3G4qSaFBcmNSFILEC?mode=ems_copy_t"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSfrCMpHwJW8fi0lHHphHELkkkxyA2tL-rlTK798tdh85blzmw/viewform"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex p-6 justify-center items-center gap-2 rounded-[80px] bg-[#A41C3F] text-[#F1EAEB] font-bold text-xl lg:text-[28px] transition-all duration-300 ease-in-out hover:bg-[#2D2124] hover:scale-105"
             >
               <Image src={Rocket} alt="Start Learning Today - Rocket Icon" width={22} height={21} />
