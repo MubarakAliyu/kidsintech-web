@@ -1,4 +1,3 @@
-import Footer from "@/components/Footer";
 import HeroSection from "@/components/views/HeroSection";
 import AboutSection from "@/components/views/AboutSection";
 import Bootcamp from "@/components/views/Bootcamp";

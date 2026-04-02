@@ -34,7 +34,6 @@ const Header = () => {
       let activeId = "";
 
       entries.forEach((entry) => {
-        console.log(`Section ${entry.target.id} is intersecting:`, entry.isIntersecting, "ratio:", entry.intersectionRatio);
         if (entry.isIntersecting && entry.intersectionRatio > maxRatio) {
           maxRatio = entry.intersectionRatio;
           activeId = entry.target.id;
@@ -51,10 +50,7 @@ const Header = () => {
       sections.forEach((sectionId) => {
         const element = document.getElementById(sectionId);
         if (element) {
-          console.log(`Observing section: ${sectionId}`);
           observer.observe(element);
-        } else {
-          console.log(`Section not found: ${sectionId}`);
         }
       });
 
@@ -72,7 +68,6 @@ const Header = () => {
             const elementBottom = elementTop + rect.height;
 
             if (viewportCenter >= elementTop && viewportCenter <= elementBottom) {
-              console.log(`Setting initial active section: ${sectionId}`);
               setActiveSection(sectionId);
               break;
             }

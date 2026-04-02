@@ -11,6 +11,11 @@ const nextConfig = {
   experimental: {
     optimizePackageImports: ["lucide-react", "motion"],
   },
+
+  // Fix workspace root detection for Turbopack (dev only)
+  turbopack: {
+    root: process.cwd(),
+  },
 };
 
 export default nextConfig;

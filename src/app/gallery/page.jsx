@@ -21,7 +21,26 @@ import GalleryPic16 from "../../../public/assets/images/gallerypic16.avif";
 
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronLeft, ChevronRight } from "lucide-react"; // Lucide icons
+import { X, ChevronLeft, ChevronRight } from "lucide-react";
+
+const galleryImages = [
+  GalleryPic1,
+  GalleryPic2,
+  GalleryPic3,
+  GalleryPic4,
+  GalleryPic5,
+  GalleryPic6,
+  GalleryPic7,
+  GalleryPic8,
+  GalleryPic9,
+  GalleryPic10,
+  GalleryPic11,
+  GalleryPic12,
+  GalleryPic13,
+  GalleryPic14,
+  GalleryPic15,
+  GalleryPic16,
+];
 
 // Animation
 const fadeUp = {
@@ -34,25 +53,6 @@ const fadeUp = {
 };
 
 const GalleryPage = () => {
-  const galleryImages = [
-    GalleryPic1,
-    GalleryPic2,
-    GalleryPic3,
-    GalleryPic4,
-    GalleryPic5,
-    GalleryPic6,
-    GalleryPic7,
-    GalleryPic8,
-    GalleryPic9,
-    GalleryPic10,
-    GalleryPic11,
-    GalleryPic12,
-    GalleryPic13,
-    GalleryPic14,
-    GalleryPic15,
-    GalleryPic16,
-  ];
-
   const [isOpen, setIsOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 

@@ -55,6 +55,7 @@ const HeroSection = () => {
             width={913}
             height={228}
             className="w-[325px] lg:w-[913px] h-[80px] lg:h-[202px]"
+            priority
           />
 
           <motion.div
