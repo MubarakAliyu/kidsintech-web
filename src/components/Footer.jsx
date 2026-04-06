@@ -95,8 +95,8 @@ const Footer = () => {
             <a href="tel:+2347067834186" className="text-white hover:text-yellow-400 transition-colors text-xl">
               +2347067834186
             </a>
-            <a href="mailto:kidsintech@gmail.com" className="text-white hover:text-yellow-400 transition-colors text-xl">
-              kidsintech@gmail.com
+            <a href="mailto:hello@kidsintech.com" className="text-white hover:text-yellow-400 transition-colors text-xl">
+              hello@kidsintech.com
             </a>
           </div>
         </div>
