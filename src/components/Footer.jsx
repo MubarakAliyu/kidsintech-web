@@ -1,16 +1,35 @@
 "use client";
-import React from "react";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
+import { useCallback } from "react";
+import { homeSectionNav, mainNav } from "@/data/nav";
+import { site, socials } from "@/data/site";
+import Facebook from "../../public/assets/images/facebook.svg";
+import Instagram from "../../public/assets/images/instagram.svg";
 import Logo from "../../public/assets/images/logo.svg";
 import Rocket from "../../public/assets/images/rocket.svg";
 import Whatsapp from "../../public/assets/images/whatsapp.svg";
-import Facebook from "../../public/assets/images/facebook.svg";
-import Instagram from "../../public/assets/images/instagram.svg";
 import X from "../../public/assets/images/X.svg";
 
-import { useCallback } from "react";
-import { usePathname, useRouter } from "next/navigation";
+// NOTE (Batch 01): footer nav + contact + socials now render from
+// src/data (single source of truth). Fixes applied here: email ->
+// hello@kidsintech.school (was .com); About link -> /about-us (was the
+// non-existent /about). Colours converted to @theme tokens (same hex).
+
+// Map social icon keys (from site.js) to their imported SVGs.
+const SOCIAL_ICONS = {
+  whatsapp: Whatsapp,
+  facebook: Facebook,
+  instagram: Instagram,
+  X,
+};
+
+// Split routes into two balanced columns, mirroring the existing
+// two-group footer layout.
+const half = Math.ceil(mainNav.length / 2);
+const navColA = mainNav.slice(0, half);
+const navColB = mainNav.slice(half);
 
 const Footer = () => {
   const pathname = usePathname();
@@ -25,22 +44,25 @@ const Footer = () => {
         router.push(`/`);
       }
     },
-    [pathname, router]
+    [pathname, router],
   );
 
-  return (
-    <footer className="bg-[#401D26] px-8 lg:px-[160px] py-[96px] ">
-      <div className="container flex flex-col gap-14 items-cente text-white">
+  const linkClass =
+    "text-white hover:text-yellow-400 transition-colors text-xl";
 
+  return (
+    <footer className="bg-maroon px-8 lg:px-[160px] py-[96px]">
+      <div className="container flex flex-col gap-14 items-cente text-white">
+        {/* CTA */}
         <div className="flex flex-col gap-6 items-center">
           <h2 className="text-3xl md:text-5xl lg:text-[60px] leading-normal font-bold text-white text-center">
             Coding Bootcamp 2.0 is now open!
           </h2>
           <Link
-            href="https://docs.google.com/forms/d/e/1FAIpQLSfrCMpHwJW8fi0lHHphHELkkkxyA2tL-rlTK798tdh85blzmw/viewform"
+            href={site.registrationUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-[#A41C3F] hover:bg-[#2D2124] transition-all duration-300 ease-in-out flex items-center gap-2 justify-center p-6 rounded-[80px] text-[#F1EAEB] text-xl lg:text-2xl font-bold w-full cursor-pointer"
+            className="bg-brand-red hover:bg-ink transition-all duration-300 ease-in-out flex items-center gap-2 justify-center p-6 rounded-[80px] text-paper text-xl lg:text-2xl font-bold w-full cursor-pointer"
           >
             <Image src={Rocket} alt="Rocket" width={20} height={20} />
             Register Now!
@@ -51,52 +73,52 @@ const Footer = () => {
         <div className="border-t border-white w-full"></div>
 
         {/* Middle Section */}
-        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
+        <div className="flex flex-col lg:flex-row items-start lg:items-start justify-between gap-8">
           {/* Logo */}
           <div className="flex-shrink-0">
             <Image src={Logo} alt="Kids in Tech Logo" width={200} height={60} />
           </div>
 
           {/* Vertical Separator */}
-          <div className=" hidden md:block border-l border-white h-[120px]"></div>
+          <div className="hidden md:block border-l border-white h-[120px]"></div>
 
-          {/* Navigation Links */}
+          {/* Navigation Column A */}
           <div className="flex flex-col gap-2 self-start items-start">
-            <Link href="/" className="text-white hover:text-yellow-400 transition-colors text-xl">
-              Home
-            </Link>
-            <button
-              type="button"
-              onClick={() => scrollOrNavigate("coding-bootcamp")}
-              className="text-white hover:text-yellow-400 transition-colors text-xl"
-            >
-              Coding Bootcamp
-            </button>
-            <button
-              type="button"
-              onClick={() => scrollOrNavigate("design-stem")}
-              className="text-white hover:text-yellow-400 transition-colors text-xl"
-            >
-              Design & STEM Bootcamp
-            </button>
+            {navColA.map((item) => (
+              <Link key={item.href} href={item.href} className={linkClass}>
+                {item.label}
+              </Link>
+            ))}
           </div>
 
-          <div className="flex flex-col gap-2">
-            <Link href="/about" className="text-white hover:text-yellow-400 transition-colors text-xl">
-              About Us
-            </Link>
-            <Link href="/gallery" className="text-white hover:text-yellow-400 transition-colors text-xl">
-              Our Gallery
-            </Link>
+          {/* Navigation Column B + Home-section scroll links */}
+          <div className="flex flex-col gap-2 self-start items-start">
+            {navColB.map((item) => (
+              <Link key={item.href} href={item.href} className={linkClass}>
+                {item.label}
+              </Link>
+            ))}
+            {homeSectionNav.map((s) => (
+              <button
+                key={s.anchor}
+                type="button"
+                onClick={() => scrollOrNavigate(s.anchor)}
+                className={`${linkClass} text-left`}
+              >
+                {s.label}
+              </button>
+            ))}
           </div>
 
           {/* Contact Information */}
           <div className="flex flex-col gap-2">
-            <a href="tel:+2347067834186" className="text-white hover:text-yellow-400 transition-colors text-xl">
-              +2347067834186
-            </a>
-            <a href="mailto:hello@kidsintech.com" className="text-white hover:text-yellow-400 transition-colors text-xl">
-              hello@kidsintech.com
+            {site.phones.map((p) => (
+              <a key={p.tel} href={`tel:${p.tel}`} className={linkClass}>
+                {p.label}
+              </a>
+            ))}
+            <a href={`mailto:${site.email}`} className={linkClass}>
+              {site.email}
             </a>
           </div>
         </div>
@@ -107,25 +129,28 @@ const Footer = () => {
         {/* Bottom Section */}
         <div className="flex flex-col md:flex-row items-start lg:items-center justify-between gap-8">
           {/* Copyright */}
-          <div className="text-2xl text-white">COPYRIGHT 2025 ALL RIGHTS RESERVED KIDS IN TECH</div>
+          <div className="text-2xl text-white">
+            COPYRIGHT 2025 ALL RIGHTS RESERVED KIDS IN TECH
+          </div>
 
           {/* Social Media Icons */}
           <div className="flex items-start justify-center gap-6">
-            <a
-              href="https://chat.whatsapp.com/LrBRk3G4qSaFBcmNSFILEC?mode=ems_copy_t"
-              className="text-white hover:text-yellow-400 transition-colors"
-            >
-              <Image src={Whatsapp} alt="WhatsApp" width={24} height={24} />
-            </a>
-            <a href="https://web.facebook.com/profile.php?id=61578715182203" className="text-white hover:text-yellow-400 transition-colors">
-              <Image src={Facebook} alt="Facebook" width={24} height={24} />
-            </a>
-            <a href="https://www.instagram.com/kidsintechkb/" className="text-white hover:text-yellow-400 transition-colors">
-              <Image src={Instagram} alt="Instagram" width={24} height={24} />
-            </a>
-            <a href="https://x.com/kidsintechkb" className="text-white hover:text-yellow-400 transition-colors">
-              <Image src={X} alt="X (Twitter)" width={24} height={24} />
-            </a>
+            {socials.map((s) => {
+              const Icon = SOCIAL_ICONS[s.icon];
+              if (!Icon) return null;
+              return (
+                <a
+                  key={s.name}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={s.name}
+                  className="text-white hover:text-yellow-400 transition-colors"
+                >
+                  <Image src={Icon} alt={s.name} width={24} height={24} />
+                </a>
+              );
+            })}
           </div>
         </div>
       </div>

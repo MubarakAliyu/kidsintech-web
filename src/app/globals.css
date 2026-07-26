@@ -1,5 +1,70 @@
 @import "tailwindcss";
 
+/*
+ * Kids in Tech — Design Tokens (Batch 01 foundation)
+ * -------------------------------------------------------------------
+ * These @theme tokens capture the EXACT current palette (see
+ * DESIGN_TOKENS.md for the full map + source). Nothing here changes
+ * how anything renders — every value equals the hex already used in
+ * the codebase, just given a name so new components can reference
+ * `bg-cream`, `text-maroon`, etc. instead of arbitrary `[#...]` values.
+ * Existing inline arbitrary colours are intentionally left untouched
+ * (expand-don't-redesign applies to CSS too).
+ */
+@theme {
+  /* ---- Brand core ---- */
+  --color-cream: #fff7f1; /* page background */
+  --color-maroon: #401d26; /* footer bg + primary dark text */
+  --color-ink: #2d2124; /* near-black body text / nav */
+  --color-brand-red: #a41c3f; /* primary CTA */
+  --color-rust: #a4431c; /* secondary warm accent */
+
+  /* ---- Teals / greens ---- */
+  --color-teal-active: #0f766e; /* active nav link */
+  --color-teal: #1ca48e; /* WhatsApp "Join Us" button */
+  --color-teal-alt: #1da693; /* mobile WhatsApp button variant */
+  --color-green-success: #34a33f; /* registration / success */
+  --color-green-deep: #214a25; /* dark green pill */
+  --color-green-olive: #60a41c; /* olive accent */
+
+  /* ---- Gold ---- */
+  --color-gold: #ffdaa3; /* badge pills */
+
+  /* ---- Rotating pastel section tints ---- */
+  --color-tint-lime: #edf4d6; /* AboutSection */
+  --color-tint-butter: #fdf2cb; /* CodingClassSection */
+  --color-tint-pale: #f6f8dc; /* LearningOutcome / about */
+  --color-tint-olive: #d6de9b; /* Bootcamp "overview" box */
+  --color-tint-blue: #d5eaf4; /* FounderNoteSection */
+  --color-tint-peach: #f4e4d5; /* AboutSponsorSection */
+
+  /* ---- Dark panels ---- */
+  --color-panel-dark: #353226;
+  --color-panel-charcoal: #2c2f28;
+
+  /* ---- Light text on dark ---- */
+  --color-paper: #f1eaeb;
+  --color-mint: #eef3e9;
+  --color-blush: #f3e9e9;
+
+  /* ---- Lines ---- */
+  --color-hairline: #f1e5de;
+
+  /* ---- About timeline accents ---- */
+  --color-accent-plum: #5b343e;
+  --color-accent-moss: #8e9e5a;
+  --color-accent-steel: #5c6d8f;
+  --color-accent-indigo: #675982;
+
+  /* ---- Radii (signature rounded cards) ---- */
+  --radius-pill: 118px; /* skewed section-label pills */
+
+  /* ---- Fonts ----
+   * PolySans is loaded in layout.js as CSS var --font-polysans.
+   * Expose it as the Tailwind sans family so `font-sans` == PolySans. */
+  --font-sans: var(--font-polysans), sans-serif;
+}
+
 @theme inline {
   /* Screens */
   --breakpoint-*: initial;
@@ -25,7 +90,11 @@
 
 @layer base {
   html {
-    font-family: var(--font-tenor-sans);
+    /* Was `var(--font-tenor-sans)` — a dead reference (that font was
+     * never defined). Body already renders PolySans on all content, so
+     * pointing html at the same var removes the dangling token with no
+     * visual change. */
+    font-family: var(--font-polysans), sans-serif;
     scroll-behavior: smooth;
   }
 
@@ -39,5 +108,19 @@
   /* Optional: utility classes if you want */
   .font-polysans {
     font-family: var(--font-polysans), sans-serif;
+  }
+
+  /* Global reduced-motion safety net. Motion utilities in
+   * src/lib/motion.js also branch on this, but this ensures any
+   * CSS-driven animation/transition is calmed for users who ask. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
