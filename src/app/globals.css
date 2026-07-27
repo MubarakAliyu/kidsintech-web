@@ -29,6 +29,7 @@
 
   /* ---- Gold ---- */
   --color-gold: #ffdaa3; /* badge pills */
+  --color-brown: #694f42; /* text on gold/olive pills */
 
   /* ---- Rotating pastel section tints ---- */
   --color-tint-lime: #edf4d6; /* AboutSection */

@@ -1,17 +1,18 @@
 "use client";
-import React from "react";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import React from "react";
+import { site } from "@/data/site";
+import HeroArr1 from "../../../public/assets/images/heroArr1.svg";
+import HeroArr2 from "../../../public/assets/images/heroArr2.svg";
 import Heading from "../../../public/assets/images/heroHeading.avif";
-import Rocket from "../../../public/assets/images/rocket.svg";
+import heroImg14 from "../../../public/assets/images/heroImg1&4.avif";
 import heroImg1 from "../../../public/assets/images/heroImg1.avif";
 import heroImg2 from "../../../public/assets/images/heroImg2.avif";
 import heroImg3 from "../../../public/assets/images/heroImg3.avif";
 import heroImg4 from "../../../public/assets/images/heroImg4.avif";
-import heroImg14 from "../../../public/assets/images/heroImg1&4.avif";
-import HeroArr1 from "../../../public/assets/images/heroArr1.svg";
-import HeroArr2 from "../../../public/assets/images/heroArr2.svg";
+import Rocket from "../../../public/assets/images/rocket.svg";
 
 // Fade-up animation
 const fadeUp = {
@@ -37,8 +38,18 @@ const HeroSection = () => {
     <section className="bg-[#FFF7F1] px-4 sm:px-8 lg:px-[160px] py-24">
       <article className="container flex flex-col items-center gap-14 relative">
         {/* Decorative Arrow 1 */}
-        <motion.div variants={float} initial="hidden" animate="visible" className="hidden lg:block absolute -top-[3%] right-[0%]">
-          <Image src={HeroArr1} alt="Decorative Arrow" width={158} height={110} />
+        <motion.div
+          variants={float}
+          initial="hidden"
+          animate="visible"
+          className="hidden lg:block absolute -top-[3%] right-[0%]"
+        >
+          <Image
+            src={HeroArr1}
+            alt="Decorative Arrow"
+            width={158}
+            height={110}
+          />
         </motion.div>
 
         {/* Header */}
@@ -64,19 +75,36 @@ const HeroSection = () => {
             className="bg-white py-1.5 px-2.5 lg:px-8 lg:py-4 gap-2.5 flex items-center rounded-3xl lg:rounded-[100px]"
           >
             <p className="text-base sm:text-lg lg:text-xl text-center font-normal text-[#2D2124]">
-              Where creativity meets technology, and young minds discover the power of coding, design, and STEM.
+              Every child has a spark. We help them turn it into real skills —
+              coding, design, and STEM — through hands-on learning that feels
+              like play.
             </p>
           </motion.div>
 
-          <motion.div variants={fadeUp} custom={2}>
+          <motion.div
+            variants={fadeUp}
+            custom={2}
+            className="flex flex-col sm:flex-row items-center gap-4"
+          >
             <Link
-              href="https://docs.google.com/forms/d/e/1FAIpQLSfrCMpHwJW8fi0lHHphHELkkkxyA2tL-rlTK798tdh85blzmw/viewform"
+              href={site.registrationUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="flex p-6 justify-center items-center gap-2 rounded-[80px] bg-[#A41C3F] text-[#F1EAEB] font-bold text-xl lg:text-[28px] transition-all duration-300 ease-in-out hover:bg-[#2D2124] hover:scale-105"
             >
-              <Image src={Rocket} alt="Start Learning Today - Rocket Icon" width={22} height={21} />
+              <Image
+                src={Rocket}
+                alt="Start Learning Today - Rocket Icon"
+                width={22}
+                height={21}
+              />
               Start Learning Today!
+            </Link>
+            <Link
+              href="/programs"
+              className="flex p-6 justify-center items-center gap-2 rounded-[80px] border-2 border-[#A41C3F] text-[#A41C3F] font-bold text-xl lg:text-[28px] transition-all duration-300 ease-in-out hover:bg-[#A41C3F] hover:text-[#F1EAEB] hover:scale-105"
+            >
+              Explore Programs
             </Link>
           </motion.div>
         </motion.div>
@@ -88,7 +116,12 @@ const HeroSection = () => {
           animate="visible"
           className="hidden lg:block absolute top-[0%] lg:-left-[5%] 2xl:-left-[3%]"
         >
-          <Image src={HeroArr2} alt="Decorative Arrow" width={158} height={401} />
+          <Image
+            src={HeroArr2}
+            alt="Decorative Arrow"
+            width={158}
+            height={401}
+          />
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
