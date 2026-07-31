@@ -58,7 +58,14 @@ function Step({ program }) {
   );
 }
 
-export default function LearningPathway() {
+// `showCta` (default true) keeps the Home usage identical; the Programs page
+// reuses this component with showCta={false} (it's already on /programs).
+export default function LearningPathway({
+  showCta = true,
+  eyebrow = "Learning Pathway",
+  title = "A clear journey from first block to real builds",
+  subtitle = "Four levels take curious kids from visual coding all the way to AI, games and mobile apps — each step building on the last.",
+}) {
   return (
     <section
       className="bg-cream px-4 sm:px-8 lg:px-[160px] py-16 lg:py-24"
@@ -66,9 +73,9 @@ export default function LearningPathway() {
     >
       <div className="container flex flex-col items-center gap-12">
         <SectionHeader
-          eyebrow="Learning Pathway"
-          title="A clear journey from first block to real builds"
-          subtitle="Four levels take curious kids from visual coding all the way to AI, games and mobile apps — each step building on the last."
+          eyebrow={eyebrow}
+          title={title}
+          subtitle={subtitle}
           headingId="pathway-heading"
           pillBg="bg-tint-lime"
         />
@@ -99,14 +106,16 @@ export default function LearningPathway() {
           ))}
         </RevealGroup>
 
-        <Reveal variant={fadeUp}>
-          <Link
-            href="/programs"
-            className="inline-flex items-center gap-2 rounded-full bg-brand-red text-paper px-6 py-4 font-bold text-lg transition-all duration-150 hover:bg-ink active:scale-[0.98]"
-          >
-            Explore all programs
-          </Link>
-        </Reveal>
+        {showCta && (
+          <Reveal variant={fadeUp}>
+            <Link
+              href="/programs"
+              className="inline-flex items-center gap-2 rounded-full bg-brand-red text-paper px-6 py-4 font-bold text-lg transition-all duration-150 hover:bg-ink active:scale-[0.98]"
+            >
+              Explore all programs
+            </Link>
+          </Reveal>
+        )}
       </div>
     </section>
   );
