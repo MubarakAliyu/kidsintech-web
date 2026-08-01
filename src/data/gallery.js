@@ -1,11 +1,17 @@
 /*
- * gallery.js — the existing 16 gallery photos, data-driven with
- * category/cohort tags so Batch 07 can group/filter and cohort pages can
- * pull their own photos. Static imports keep next/image blur placeholders.
+ * gallery.js — the 16 gallery photos, organised by category/cohort so the
+ * Gallery page (Batch 07) can filter them and cohort pages (Batch 05) can
+ * pull their own. Static imports keep next/image blur placeholders.
  *
- * TODO (owner): RE-TAG each image with its TRUE cohort/category. The
- * `cohort` values below are a placeholder round-robin across cohorts 1–3
- * so cohort pages render a gallery — they are NOT accurate yet.
+ * HOW TO ADD A NEW COHORT'S PHOTOS (no layout edits needed):
+ *   1. Drop the AVIF files in public/assets/images/.
+ *   2. `import` them here and append entries to `galleryItems` with the
+ *      right `category` (e.g. "Bootcamp 5") and `cohort` number.
+ *   3. For a video, add `{ kind: "video", videoId: "<youtube id>", ... }`.
+ *   The FilterBar, counts, grid and lightbox all update automatically.
+ *
+ * TODO (owner): the `category` tags below are BEST-GUESS placeholders —
+ * please correct them (see the batch report for the current mapping).
  * Allowed categories: "Bootcamp 1" | "Bootcamp 2" | "Bootcamp 3"
  *   | "Future Bootcamp 4" | "Robotics" | "Coding Sessions" | "Parents"
  *   | "Certificates" | "Graduation" | "Innovation Events".
@@ -46,20 +52,63 @@ const sources = [
   GalleryPic16,
 ];
 
+// Best-guess category per image (index-aligned with `sources`). TODO: correct.
+const categories = [
+  "Coding Sessions",
+  "Coding Sessions",
+  "Robotics",
+  "Bootcamp 3",
+  "Certificates",
+  "Graduation",
+  "Coding Sessions",
+  "Robotics",
+  "Bootcamp 2",
+  "Parents",
+  "Coding Sessions",
+  "Bootcamp 1",
+  "Innovation Events",
+  "Certificates",
+  "Coding Sessions",
+  "Graduation",
+];
+
 export const galleryItems = sources.map((src, i) => ({
   id: i + 1,
   src,
-  alt: `Kids in Tech bootcamp — photo ${i + 1}`,
-  category: "Coding Sessions", // TODO: real category
+  alt: `Kids in Tech bootcamp — photo ${i + 1}`, // TODO: meaningful alt per image
+  caption: `Kids in Tech — ${categories[i]}`,
+  category: categories[i],
   cohort: (i % 3) + 1, // TODO: real cohort — placeholder round-robin 1–3
+  kind: "image",
 }));
 
-// Distinct categories present (for filter chips later).
-export const galleryCategories = [
-  ...new Set(galleryItems.map((i) => i.category)),
+// Ordered category list (only those actually present), for building filters.
+const presentCategories = [
+  "Bootcamp 1",
+  "Bootcamp 2",
+  "Bootcamp 3",
+  "Future Bootcamp 4",
+  "Robotics",
+  "Coding Sessions",
+  "Parents",
+  "Certificates",
+  "Graduation",
+  "Innovation Events",
+].filter((c) => galleryItems.some((i) => i.category === c));
+
+export const galleryCategories = presentCategories;
+
+// Filters (label/value/count) for the reused FilterBar — same shape Batch 06 uses.
+export const galleryFilters = [
+  { key: "all", label: "All", count: galleryItems.length },
+  ...presentCategories.map((c) => ({
+    key: c,
+    label: c,
+    count: galleryItems.filter((i) => i.category === c).length,
+  })),
 ];
 
-// Photos for a given cohort number (used by cohort pages).
+// Photos for a given cohort number (used by cohort pages — Batch 05).
 export const getGalleryByCohort = (cohort) =>
   galleryItems.filter((i) => i.cohort === cohort);
 
