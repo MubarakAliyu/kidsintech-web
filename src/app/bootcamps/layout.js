@@ -1,3 +1,5 @@
+const baseUrl = "https://kidsintech.school";
+
 export const metadata = {
   title: "Bootcamps",
   description:
@@ -13,14 +15,25 @@ export const metadata = {
     title: "Bootcamps | Kids in Tech",
     description:
       "Past cohorts and the current Coding Bootcamp 2.0 for ages 8–18.",
-    url: "https://kidsintech.school/bootcamps",
+    url: `${baseUrl}/bootcamps`,
+    images: [
+      {
+        url: "/assets/images/heroImg2.avif",
+        width: 1200,
+        height: 630,
+        alt: "Kids in Tech bootcamp",
+      },
+    ],
   },
   twitter: {
     title: "Bootcamps | Kids in Tech",
     description: "Kids in Tech coding bootcamp cohorts for ages 8–18.",
+    images: ["/assets/images/heroImg2.avif"],
   },
 };
 
+// NOTE: this layout wraps BOTH /bootcamps and /bootcamps/[slug], so no
+// route-specific JSON-LD lives here — each page renders its own breadcrumb.
 export default function BootcampsLayout({ children }) {
   return children;
 }

@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useCallback } from "react";
+import { openBootcamp, upcomingBootcamp } from "@/data/bootcamps";
 import { homeSectionNav, mainNav } from "@/data/nav";
 import { site, socials } from "@/data/site";
 import Facebook from "../../public/assets/images/facebook.svg";
@@ -11,6 +12,14 @@ import Logo from "../../public/assets/images/logo.svg";
 import Rocket from "../../public/assets/images/rocket.svg";
 import Whatsapp from "../../public/assets/images/whatsapp.svg";
 import X from "../../public/assets/images/X.svg";
+
+// Footer CTA heading is derived from bootcamp status (single source of
+// truth) — never hardcoded — so it can't contradict the rest of the site.
+const ctaHeading = openBootcamp
+  ? `${openBootcamp.title} is now open!`
+  : upcomingBootcamp
+    ? `${upcomingBootcamp.title} is coming soon`
+    : "Registration is open!";
 
 // NOTE (Batch 01): footer nav + contact + socials now render from
 // src/data (single source of truth). Fixes applied here: email ->
@@ -56,7 +65,7 @@ const Footer = () => {
         {/* CTA */}
         <div className="flex flex-col gap-6 items-center">
           <h2 className="text-3xl md:text-5xl lg:text-[60px] leading-normal font-bold text-white text-center">
-            Coding Bootcamp 2.0 is now open!
+            {ctaHeading}
           </h2>
           <Link
             href={site.registrationUrl}
