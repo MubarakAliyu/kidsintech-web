@@ -81,3 +81,17 @@ Heading text manifest (for reference / future `alt` improvements):
 - [ ] OG/Twitter + JSON-LD images reference `.png` but the assets on disk are
   `.avif` (`heroHeading`, `aboutHeading`, `heroImg1`) → broken social previews.
   Provide `.png`/`.jpg` social images (1200×630) or we point tags at real files.
+
+## 📰 News / Blog (`src/data/news.js`) — Batch 09
+- [ ] Real posts (title, excerpt, cover image, author) + real `body` blocks —
+  all 3 seeded posts are `[… — TODO]`. Never fabricate quotes/names.
+- [ ] Bootcamp 3 Recap: real recap copy + consented student/parent quote.
+
+## ✉️ Contact page (`src/app/contact`) — Batch 09
+- [ ] **EmailJS keys** in `.env.local` (never commit): `NEXT_PUBLIC_EMAILJS_SERVICE_ID`,
+  `NEXT_PUBLIC_EMAILJS_TEMPLATE_ID`, `NEXT_PUBLIC_EMAILJS_PUBLIC_KEY`. Until set,
+  the form gracefully falls back to a `mailto:` (no fake submit).
+- [ ] **Google Map**: set `site.mapUrl` in `src/data/site.js` to the venue's
+  Google Maps *embed* URL (and/or a full street address). Currently a placeholder.
+- [ ] Confirm the FAQ answers with TODOs in `src/data/faqs.js` (price, next dates,
+  what to bring).
