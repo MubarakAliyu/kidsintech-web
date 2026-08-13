@@ -7,14 +7,10 @@ const nextConfig = {
     unoptimized: true, // Required for static export
   },
 
-  // This project lints with Biome (`npm run lint` = `biome check`), not
-  // ESLint — ESLint isn't even a dependency. Next 16 otherwise runs its
-  // built-in ESLint during `build` and fails on rules the project doesn't
-  // use (and which the pre-existing components already violate). Skip it
-  // here so the static export builds; Biome remains the real linter.
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
+  // NOTE: This project lints with Biome (`npm run lint` = `biome check`).
+  // Next 16 removed its built-in ESLint step from `build`, so the old
+  // `eslint: { ignoreDuringBuilds }` key is no longer recognised (it now
+  // emits an "Invalid next.config" warning) and has been removed.
 
   // Enable experimental features for better performance
   experimental: {
