@@ -1,199 +1,189 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import FounderNoteSection from "@/components/views/FounderNoteSection";
-import Heading from "../../../public/assets/images/galleryHeading.avif";
-import GalleryPic1 from "../../../public/assets/images/gallerypic1.avif";
-import GalleryPic2 from "../../../public/assets/images/gallerypic2.avif";
-import GalleryPic3 from "../../../public/assets/images/gallerypic3.avif";
-import GalleryPic4 from "../../../public/assets/images/gallerypic4.avif";
-import GalleryPic5 from "../../../public/assets/images/gallerypic5.avif";
-import GalleryPic6 from "../../../public/assets/images/gallerypic6.avif";
-import GalleryPic7 from "../../../public/assets/images/gallerypic7.avif";
-import GalleryPic8 from "../../../public/assets/images/gallerypic8.avif";
-import GalleryPic9 from "../../../public/assets/images/gallerypic9.avif";
-import GalleryPic10 from "../../../public/assets/images/gallerypic10.avif";
-import GalleryPic11 from "../../../public/assets/images/galleryimg1.avif";
-import GalleryPic12 from "../../../public/assets/images/galleryimg2.avif";
-import GalleryPic13 from "../../../public/assets/images/galleryimg3.avif";
-import GalleryPic14 from "../../../public/assets/images/gallerypic14.avif";
-import GalleryPic15 from "../../../public/assets/images/gallerypic15.avif";
-import GalleryPic16 from "../../../public/assets/images/gallerypic16.avif";
-
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import dynamic from "next/dynamic";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
+/*
+ * Gallery — UPDATED IN PLACE (Batch 07): same heading/intro and the existing
+ * founder-note + Register CTA are preserved; we ADD category filtering
+ * (reused <FilterBar>), an animated reflow, and image viewing via the reused
+ * <Lightbox>. All 16 existing images still render. Video items (none yet)
+ * open a <VideoEmbed> modal.
+ */
+import { useEffect, useMemo, useState } from "react";
+import Breadcrumb from "@/components/Breadcrumb";
+import FilterBar from "@/components/FilterBar";
+import GalleryTile from "@/components/GalleryTile";
+import FounderNoteSection from "@/components/views/FounderNoteSection";
+import { galleryFilters, galleryItems } from "@/data/gallery";
+import { fadeUp, Reveal } from "@/lib/motion";
+import Heading from "../../../public/assets/images/galleryHeading.avif";
 
-const galleryImages = [
-  GalleryPic1,
-  GalleryPic2,
-  GalleryPic3,
-  GalleryPic4,
-  GalleryPic5,
-  GalleryPic6,
-  GalleryPic7,
-  GalleryPic8,
-  GalleryPic9,
-  GalleryPic10,
-  GalleryPic11,
-  GalleryPic12,
-  GalleryPic13,
-  GalleryPic14,
-  GalleryPic15,
-  GalleryPic16,
-];
+const Lightbox = dynamic(() => import("@/components/Lightbox"));
+const VideoEmbed = dynamic(() => import("@/components/VideoEmbed"));
 
-// Animation
-const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: (i) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.1, duration: 0.6, ease: "easeOut" },
-  }),
-};
+export default function GalleryPage() {
+  const reduced = useReducedMotion();
+  const [active, setActive] = useState("all");
+  const [lightboxIndex, setLightboxIndex] = useState(null);
+  const [videoItem, setVideoItem] = useState(null);
 
-const GalleryPage = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const filtered = useMemo(
+    () =>
+      active === "all"
+        ? galleryItems
+        : galleryItems.filter((i) => i.category === active),
+    [active],
+  );
+  // Lightbox navigates across the current filtered IMAGE set only.
+  const filteredImages = useMemo(
+    () => filtered.filter((i) => i.kind !== "video"),
+    [filtered],
+  );
+  const lightboxItems = filteredImages.map((i) => ({
+    src: i.src,
+    alt: i.caption || i.alt,
+  }));
 
-  const openModal = (index) => {
-    setCurrentIndex(index);
-    setIsOpen(true);
+  const onFilterChange = (key) => {
+    setActive(key);
+    setLightboxIndex(null); // avoid stale index across filter changes
   };
 
-  const closeModal = () => setIsOpen(false);
-  const nextImage = () => setCurrentIndex((prev) => (prev + 1) % galleryImages.length);
-  const prevImage = () => setCurrentIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
-
-  // Keyboard navigation
+  // Close the video modal on Escape.
   useEffect(() => {
-    if (!isOpen) return;
-    const handleKey = (e) => {
-      if (e.key === "Escape") closeModal();
-      if (e.key === "ArrowRight") nextImage();
-      if (e.key === "ArrowLeft") prevImage();
-    };
-    window.addEventListener("keydown", handleKey);
-    return () => window.removeEventListener("keydown", handleKey);
-  }, [isOpen]);
+    if (!videoItem) return;
+    const onKey = (e) => e.key === "Escape" && setVideoItem(null);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [videoItem]);
+
+  const openItem = (item) => {
+    if (item.kind === "video") {
+      setVideoItem(item);
+    } else {
+      const idx = filteredImages.findIndex((i) => i.id === item.id);
+      setLightboxIndex(idx >= 0 ? idx : 0);
+    }
+  };
 
   return (
     <div>
-      <section className="bg-[#FFF7F1] px-4 sm:px-8 lg:px-[160px] py-12 sm:py-16 lg:py-[96px]">
+      <section className="bg-cream px-4 sm:px-8 lg:px-[160px] py-12 sm:py-16 lg:py-[96px]">
         <article className="container flex flex-col items-center gap-6 sm:gap-8 relative">
-          {/* Header */}
-          <div className="flex flex-col items-center lg:-space-y-4">
-            {/* Heading Image */}
-            <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0}>
-              <Image src={Heading} alt="heading" width={913} height={202} className="w-[325px] lg:w-[913px] h-[80px] lg:h-[202px]" />
-            </motion.div>
+          <Breadcrumb
+            items={[{ label: "Home", href: "/" }, { label: "Gallery" }]}
+            className="self-center"
+          />
 
-            {/* Paragraph */}
-            <motion.div
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              custom={5}
+          {/* Accessible page h1 (heading below is an image) — no visual change. */}
+          <h1 className="sr-only">
+            Kids in Tech gallery — photos and videos from our bootcamps
+          </h1>
+
+          {/* Existing heading + intro (preserved) */}
+          <div className="flex flex-col items-center lg:-space-y-4">
+            <Reveal variant={fadeUp}>
+              <Image
+                src={Heading}
+                alt="Our Gallery"
+                width={913}
+                height={202}
+                className="w-[325px] lg:w-[913px] h-[80px] lg:h-[202px]"
+              />
+            </Reveal>
+            <Reveal
+              as="div"
+              variant={fadeUp}
+              custom={1}
               className="bg-white py-1.5 px-2.5 lg:px-8 lg:py-4 gap-2.5 flex items-center rounded-3xl lg:rounded-full"
             >
               <p className="text-base sm:text-lg lg:text-xl text-center font-normal text-[#2D2124]">
-                Discover the creativity, fun, and learning from our Kids in Tech Bootcamps. Each photo and video captures moments of
-                curiosity, teamwork, and growth — little glimpses of the future our kids are building today.
+                Discover the creativity, fun, and learning from our Kids in Tech
+                Bootcamps. Each photo and video captures moments of curiosity,
+                teamwork, and growth — little glimpses of the future our kids
+                are building today.
               </p>
-            </motion.div>
+            </Reveal>
           </div>
 
-          {/* Gallery */}
-          <div className="columns-2 sm:columns-3 lg:columns-3 gap-4 sm:gap-6 w-full">
-            {galleryImages.map((img, i) => (
-              <motion.figure
-                key={i}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                custom={i}
-                className="mb-4 sm:mb-6 rounded-2xl overflow-hidden cursor-pointer group break-inside-avoid"
-                onClick={() => openModal(i)}
-              >
-                <Image
-                  src={img}
-                  alt={`Gallery image ${i + 1}`}
-                  className="w-full h-auto object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
-                  placeholder="blur"
-                />
-              </motion.figure>
-            ))}
-          </div>
+          {/* Category filter (reused FilterBar) */}
+          <FilterBar
+            filters={galleryFilters}
+            active={active}
+            onChange={onFilterChange}
+            label="Filter gallery by category"
+          />
+
+          {/* Result count for assistive tech */}
+          <p className="sr-only" aria-live="polite">
+            Showing {filtered.length} {filtered.length === 1 ? "item" : "items"}
+            {active !== "all" ? ` in ${active}` : ""}.
+          </p>
+
+          {/* Grid with animated reflow */}
+          <motion.div
+            layout={!reduced}
+            className="columns-2 sm:columns-3 lg:columns-4 gap-4 sm:gap-6 w-full [&>*]:mb-4 sm:[&>*]:mb-6"
+          >
+            <AnimatePresence mode="popLayout">
+              {filtered.map((item) => (
+                <motion.div
+                  key={item.id}
+                  layout={!reduced}
+                  initial={reduced ? false : { opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={reduced ? { opacity: 0 } : { opacity: 0, scale: 0.9 }}
+                  transition={{ duration: reduced ? 0 : 0.25, ease: "easeOut" }}
+                  className="break-inside-avoid"
+                >
+                  <GalleryTile item={item} onClick={() => openItem(item)} />
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </motion.div>
+
+          {filtered.length === 0 && (
+            <p className="text-ink/60">
+              No items in this category yet — check back soon!
+            </p>
+          )}
         </article>
       </section>
 
-      {/* Founder note */}
+      {/* Existing founder note + Register CTA (unchanged) */}
       <FounderNoteSection />
 
-      {/* Modal Preview */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-95"
-            onClick={closeModal}
-          >
-            {/* Close button */}
-            <button
-              onClick={closeModal}
-              className="absolute top-6 right-6 text-white p-2 rounded-full hover:bg-white/20 transition cursor-pointer"
-            >
-              <X size={32} />
-            </button>
+      {/* Reused Lightbox for images */}
+      <Lightbox
+        items={lightboxItems}
+        index={lightboxIndex}
+        onClose={() => setLightboxIndex(null)}
+        onIndexChange={setLightboxIndex}
+      />
 
-            {/* Prev */}
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                prevImage();
-              }}
-              className="absolute left-6 top-1/2 -translate-y-1/2 text-white p-2 rounded-full hover:bg-white/20 transition cursor-pointer"
-            >
-              <ChevronLeft size={40} />
-            </button>
-
-            {/* Next */}
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                nextImage();
-              }}
-              className="absolute right-6 top-1/2 -translate-y-1/2 text-white p-2 rounded-full hover:bg-white/20 transition cursor-pointer"
-            >
-              <ChevronRight size={40} />
-            </button>
-
-            {/* Image */}
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              className="max-w-4xl max-h-[85vh] mx-auto"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <Image
-                src={galleryImages[currentIndex]}
-                alt={`Gallery image ${currentIndex + 1}`}
-                className="w-auto h-auto max-h-[85vh] rounded-lg object-contain"
-              />
-              <p className="text-white text-center mt-3 text-sm">
-                {currentIndex + 1} / {galleryImages.length}
-              </p>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* Video modal (reused VideoEmbed). Backdrop is a real button so it's
+          click + keyboard closable; Esc handled by the effect above. */}
+      {videoItem && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={videoItem.caption || "Video"}
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4"
+        >
+          <button
+            type="button"
+            aria-label="Close video"
+            onClick={() => setVideoItem(null)}
+            className="absolute inset-0 bg-black/80"
+          />
+          <div className="relative w-full max-w-3xl">
+            <VideoEmbed
+              id={videoItem.videoId}
+              title={videoItem.caption || "Kids in Tech video"}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
-};
-
-export default GalleryPage;
+}
