@@ -1,5 +1,5 @@
 "use client";
-import { Facebook, Link2, Twitter } from "lucide-react";
+import { FacebookIcon, Link2, Twitter } from "lucide-react";
 /*
  * ShareButtons — real share links (WhatsApp, X, Facebook) + copy-link with a
  * react-toastify confirmation (toast container is mounted in the root layout).
@@ -26,7 +26,7 @@ export default function ShareButtons({ url, title = "" }) {
     {
       name: "Share on Facebook",
       href: `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`,
-      Icon: Facebook,
+      Icon: FacebookIcon,
     },
   ];
 
