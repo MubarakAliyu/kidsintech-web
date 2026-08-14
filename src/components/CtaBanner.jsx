@@ -8,6 +8,7 @@
 import Link from "next/link";
 import { site } from "@/data/site";
 import { fadeUp, Reveal } from "@/lib/motion";
+import { track } from "@/lib/track";
 
 export default function CtaBanner({
   title = "Ready to start building?",
@@ -54,6 +55,7 @@ export default function CtaBanner({
                 ? "noopener noreferrer"
                 : undefined
             }
+            onClick={() => track("register_click", { label: primaryLabel })}
             className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-red text-paper px-8 py-4 font-bold text-lg transition-all duration-150 hover:bg-ink active:scale-[0.98]"
           >
             {primaryLabel}

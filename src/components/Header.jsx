@@ -6,6 +6,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { homeSectionNav, mainNav, moreNav, primaryNav } from "@/data/nav";
 import { site } from "@/data/site";
+import { track } from "@/lib/track";
 import Logo from "../../public/assets/images/logo.svg";
 import Menu from "../../public/assets/images/menu.svg";
 import Rocket from "../../public/assets/images/rocket.svg";
@@ -215,6 +216,7 @@ const Header = () => {
           <Link
             href={site.whatsappGroupUrl}
             target="_blank"
+            onClick={() => track("whatsapp_join", { location: "header" })}
             className="inline-flex items-center gap-2 rounded-full bg-teal text-white px-5 py-3 font-semibold shadow-sm hover:brightness-95 transition"
           >
             <Image src={Whatsapp} alt="WhatsApp" width={18} height={18} />

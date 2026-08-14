@@ -9,7 +9,9 @@ import SectionHeader from "@/components/SectionHeader";
 import Timeline from "@/components/Timeline";
 import AboutSponsorSection from "@/components/views/AboutSponsorSection";
 import { about } from "@/data/about";
+import { site } from "@/data/site";
 import { fadeUp as fadeUpUtil, Reveal, RevealGroup } from "@/lib/motion";
+import { track } from "@/lib/track";
 import Heading from "../../../public/assets/images/aboutHeading.avif";
 import GalleryImg1 from "../../../public/assets/images/aboutImg1.avif";
 import GalleryImgMob1 from "../../../public/assets/images/aboutImg1Mobile.avif";
@@ -88,9 +90,12 @@ const AboutUsPage = () => {
 
             <motion.div variants={fadeUp} custom={2}>
               <Link
-                href="https://docs.google.com/forms/d/e/1FAIpQLSfrCMpHwJW8fi0lHHphHELkkkxyA2tL-rlTK798tdh85blzmw/viewform"
+                href={site.registrationUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() =>
+                  track("register_click", { location: "about_hero" })
+                }
                 className="flex p-6 justify-center items-center gap-2 rounded-[80px] bg-[#A41C3F] text-[#F1EAEB] font-bold text-xl lg:text-[28px] transition-all duration-300 ease-in-out hover:bg-[#2D2124] cursor-pointer"
               >
                 <Image

@@ -185,6 +185,15 @@ export const bootcamps = [
   },
 ];
 
+// Display wording for a status — the SINGLE source for these strings, so no
+// component hard-codes "ended"/"open"/"coming soon" anywhere.
+export const STATUS_TEXT = {
+  ended: "Bootcamp has ended!",
+  open: "Now open!",
+  upcoming: "Coming soon",
+};
+export const statusText = (status) => STATUS_TEXT[status] || "";
+
 // Helpers — the ONLY way status should be queried.
 export const getBootcamp = (slug) =>
   bootcamps.find((b) => b.slug === slug) || null;

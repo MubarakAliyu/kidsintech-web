@@ -74,6 +74,18 @@ Heading text manifest (for reference / future `alt` improvements):
 
 ---
 
+## 📈 Analytics & registration env vars (Batch 10) — set in `.env.local`, NEVER commit
+All are optional; the site no-ops gracefully without them.
+- [ ] `NEXT_PUBLIC_GA_ID` — Google Analytics 4 (loads prod-only, after consent).
+- [ ] `NEXT_PUBLIC_CLARITY_ID` — Microsoft Clarity.
+- [ ] `NEXT_PUBLIC_META_PIXEL_ID` — Meta (Facebook) Pixel.
+- [ ] `NEXT_PUBLIC_GSC_VERIFICATION` — Google Search Console verification token
+  (placeholder google/yandex/yahoo codes were removed).
+- [ ] `NEXT_PUBLIC_EMAILJS_SERVICE_ID` / `_TEMPLATE_ID` / `_PUBLIC_KEY` — contact form.
+- [ ] `NEXT_PUBLIC_ENABLE_NATIVE_REGISTER` = `"true"` to switch `/register` from the
+  Google-Form link to the native form + Paystack scaffold.
+- [ ] `NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY` — Paystack inline (only when going native/live).
+
 ## 🔐 SEO / analytics (later batches; needs your keys)
 - [ ] Real search-console verification codes (Google/Yandex/Yahoo) — currently
   placeholders in `src/app/layout.js`. Provide real values or we remove them.

@@ -10,6 +10,7 @@
  */
 import { useState } from "react";
 import { site } from "@/data/site";
+import { track } from "@/lib/track";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -28,6 +29,7 @@ export default function NotifyForm({
       setStatus("error");
       return;
     }
+    track("notify_signup", { subject });
     const body = `Please add me to the ${subject} list. My email: ${email.trim()}`;
     window.location.href = `mailto:${toEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     setStatus("success");
