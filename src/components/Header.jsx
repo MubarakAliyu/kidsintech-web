@@ -1,4 +1,5 @@
 "use client";
+import { LogIn } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -212,7 +213,16 @@ const Header = () => {
         </nav>
 
         {/* Desktop CTA */}
-        <div className="hidden lg:flex items-center">
+        <div className="hidden lg:flex items-center gap-3">
+          {/* Secondary CTA — KITOS/LMS login (sits left of the primary Join Us) */}
+          <Link
+            href={site.loginUrl}
+            onClick={() => track("lms_login", { location: "header" })}
+            className="inline-flex items-center gap-2 rounded-full border border-teal text-teal px-5 py-3 font-semibold hover:bg-teal/10 active:scale-[0.98] transition-all duration-150 motion-reduce:transition-none motion-reduce:active:scale-100"
+          >
+            <LogIn size={18} aria-hidden="true" />
+            Login to LMS
+          </Link>
           <Link
             href={site.whatsappGroupUrl}
             target="_blank"
@@ -347,6 +357,14 @@ const Header = () => {
 
               {/* CTAs */}
               <div className="mt-auto flex flex-col gap-4 pt-4">
+                <Link
+                  href={site.loginUrl}
+                  onClick={toggleMenu}
+                  className="w-full inline-flex items-center justify-center gap-2 rounded-full border border-teal text-teal px-5 py-3 font-semibold hover:bg-teal/10 active:scale-[0.98] transition-all duration-150 motion-reduce:transition-none motion-reduce:active:scale-100"
+                >
+                  <LogIn size={18} aria-hidden="true" />
+                  Login to LMS
+                </Link>
                 <Link
                   href={site.whatsappGroupUrl}
                   target="_blank"

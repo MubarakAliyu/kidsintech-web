@@ -24,9 +24,16 @@ import CollaborationFun from "../../../public/assets/images/outcome4.avif";
 import Rocket from "../../../public/assets/images/rocket.svg";
 import TeachHeading from "../../../public/assets/images/teachHeading.avif";
 import TeachHeadingMob from "../../../public/assets/images/teachHeadingMob.avif";
+// Meet the Team photos. To swap in a real photo, just drop the file at the
+// path below (same filename) — no code change needed:
+//   team1.avif → Aliyu Mubarak (Founder)
+//   team2.avif → Murtala Ishaq (Co-Founder & COO)
+//   team3.avif → Mustapher Muhammad Lawal (Co-Founder & CTO)
+//   team4.avif → Faruk Yusuf (Educator/Front End Dev)  TODO: replace placeholder (currently a copy of team3.avif)
 import TeamImg1 from "../../../public/assets/images/team1.avif";
 import TeamImg2 from "../../../public/assets/images/team2.avif";
 import TeamImg3 from "../../../public/assets/images/team3.avif";
+import TeamImg4 from "../../../public/assets/images/team4.avif";
 import TeamHeading from "../../../public/assets/images/teamHeading.avif";
 
 // Variant: fade up with custom stagger
@@ -568,10 +575,10 @@ const AboutUsPage = () => {
                 </figure>
                 <div className="flex flex-col items-start gap-2">
                   <p className="text-base md:text-lg lg:text-2xl text-[#401D26] leading-5 sm:leading-6 lg:leading-[26px] uppercase font-semibold">
-                    Muhammad <br /> Sani Haruna
+                    Murtala <br /> Ishaq
                   </p>
                   <p className="text-base md:text-lg lg:text-xl  text-[#401D26] leading-5 sm:leading-6 lg:leading-[26px]">
-                    Educator/Front End Dev <br /> @ Kids In Tech
+                    Co-Founder & COO <br /> @ Kids In Tech
                   </p>
                 </div>
               </motion.div>
@@ -592,10 +599,34 @@ const AboutUsPage = () => {
                 </figure>
                 <div className="flex flex-col items-start gap-2">
                   <p className="text-base md:text-lg lg:text-2xl text-[#401D26] leading-5 sm:leading-6 lg:leading-[26px] uppercase font-semibold">
-                    Salisu <br /> Tanimu
+                    Mustapher Muhammad <br /> Lawal
                   </p>
                   <p className="text-base md:text-lg lg:text-xl  text-[#401D26] leading-5 sm:leading-6 lg:leading-[26px]">
-                    Program Coordinator <br /> @ Kids In Tech
+                    Co-Founder & CTO <br /> @ Kids In Tech
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* team4 member */}
+              <motion.div
+                variants={fadeUp}
+                custom={5}
+                className="flex flex-col items-start gap-2"
+              >
+                <figure className=" overflow-hidden cursor-pointer group transform transition-transform duration-300 ease-in-out hover:scale-105 w-full lg:w-[334px] lg:h-[326px] h-full">
+                  <Image
+                    src={TeamImg4}
+                    alt="Gallery image 4"
+                    className="w-full h-full object-cover md:object-contain"
+                    placeholder="blur"
+                  />
+                </figure>
+                <div className="flex flex-col items-start gap-2">
+                  <p className="text-base md:text-lg lg:text-2xl text-[#401D26] leading-5 sm:leading-6 lg:leading-[26px] uppercase font-semibold">
+                    Faruk <br /> Yusuf
+                  </p>
+                  <p className="text-base md:text-lg lg:text-xl  text-[#401D26] leading-5 sm:leading-6 lg:leading-[26px]">
+                    Educator/Front End Dev <br /> @ Kids In Tech
                   </p>
                 </div>
               </motion.div>

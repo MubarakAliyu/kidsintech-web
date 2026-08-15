@@ -43,6 +43,11 @@ export const site = {
 
   whatsappGroupUrl:
     "https://chat.whatsapp.com/LrBRk3G4qSaFBcmNSFILEC?mode=ems_copy_t",
+
+  // LMS (KITOS) login destination for the header "Login to LMS" button.
+  // TODO: point at the real KITOS/LMS login URL when the platform goes live
+  // (placeholder routes to the /kitos info page for now).
+  loginUrl: "/kitos",
 };
 
 /*
