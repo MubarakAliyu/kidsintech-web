@@ -139,7 +139,8 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row items-start lg:items-center justify-between gap-8">
           {/* Copyright */}
           <div className="text-2xl text-white">
-            COPYRIGHT 2025 ALL RIGHTS RESERVED KIDS IN TECH
+            COPYRIGHT {new Date().getFullYear()} ALL RIGHTS RESERVED KIDS IN
+            TECH
           </div>
 
           {/* Social Media Icons */}

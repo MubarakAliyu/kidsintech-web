@@ -10,6 +10,7 @@ import emailjs from "@emailjs/browser";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { site } from "@/data/site";
+import { track } from "@/lib/track";
 
 const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
 const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
@@ -55,6 +56,8 @@ export default function ContactForm() {
     const eMap = validate(values);
     setErrors(eMap);
     if (Object.keys(eMap).length > 0) return;
+
+    track("contact_submit", { method: EMAILJS_READY ? "emailjs" : "mailto" });
 
     if (!EMAILJS_READY) {
       mailtoFallback();

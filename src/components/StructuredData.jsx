@@ -1,4 +1,4 @@
-import React from "react";
+import { site, socials } from "@/data/site";
 
 const StructuredData = ({ type = "organization" }) => {
   const baseUrl = "https://kidsintech.school";
@@ -11,8 +11,9 @@ const StructuredData = ({ type = "organization" }) => {
       "Kids in Tech is a community-driven initiative dedicated to inspiring and equipping children with essential tech and creative skills. Through fun, interactive, and hands-on learning, we help kids explore coding, design, and STEM.",
     url: baseUrl,
     logo: `${baseUrl}/assets/images/logo.svg`,
-    image: `${baseUrl}/assets/images/heroImg1.png`,
+    image: `${baseUrl}/assets/images/heroImg1.avif`,
     foundingDate: "2023",
+    parentOrganization: { "@type": "Organization", name: site.parentOrg },
     founder: {
       "@type": "Person",
       name: "Aliyu Mubarak",
@@ -24,11 +25,12 @@ const StructuredData = ({ type = "organization" }) => {
     },
     contactPoint: {
       "@type": "ContactPoint",
-      telephone: "+2347067834186",
+      telephone: site.phones[0].tel,
+      email: site.email,
       contactType: "customer service",
       availableLanguage: "English",
     },
-    sameAs: ["https://wa.me/2347067834186"],
+    sameAs: socials.map((s) => s.href),
     offers: [
       {
         "@type": "Course",

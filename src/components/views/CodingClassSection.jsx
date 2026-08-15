@@ -13,6 +13,10 @@ import GalleryImg3 from "../../../public/assets/images/galleryimg3.avif";
 import CodingArr1 from "../../../public/assets/images/codingArr1.svg";
 import CodingArr3 from "../../../public/assets/images/codingArr3.svg";
 import Link from "next/link";
+import { getBootcamp, statusText } from "@/data/bootcamps";
+
+// Status wording is data-driven (see data/bootcamps.js) — never hardcoded.
+const codingCohort = getBootcamp("bootcamp-3");
 
 // Scroll fade-up
 const fadeUp = {
@@ -95,7 +99,7 @@ const CodingClassSection = () => {
                 >
                   <p className="text-base sm:text-xl lg:text-2xl text-[#F1EAEB]">
                     {i === 0 &&
-                      "Our Coding Bootcamp is a fun, hands-on program designed to introduce kids (ages 8–16) to the world of computers, coding, and creativity. Over a series of interactive classes, children go from “What is a computer?” to “Look at the website I built!” all while having fun, making friends, and building confidence."}
+                      "Our Coding Bootcamp is a fun, hands-on program designed to introduce kids (ages 8–18) to the world of computers, coding, and creativity. Over a series of interactive classes, children go from “What is a computer?” to “Look at the website I built!” all while having fun, making friends, and building confidence."}
                     {i === 1 &&
                       "Introduce kids to the foundational tools of web development HTML for structure, CSS for design, and JavaScript for interactivity through hands-on learning and fun projects."}
                     {i === 2 &&
@@ -174,7 +178,7 @@ const CodingClassSection = () => {
               <div className="relative overflow-hidden w-fit self-end">
                 <div className="absolute inset-0 bg-[#B4A19A] rounded-tl-[60px] sm:rounded-tl-[80px] lg:rounded-tl-[118px] -skew-x-[5deg] rounded-br-[60px]" />
                 <div className="relative z-10 py-3 sm:py-4 px-4 sm:px-6 lg:px-8">
-                  <p className="font-semibold text-base md:text-lg lg:text-xl xl:text-2xl text-[#F3E9E9]">Bootcamp has ended!</p>
+                  <p className="font-semibold text-base md:text-lg lg:text-xl xl:text-2xl text-[#F3E9E9]">{statusText(codingCohort?.status)}</p>
                 </div>
               </div>
             </motion.div>

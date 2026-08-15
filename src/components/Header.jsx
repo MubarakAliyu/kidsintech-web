@@ -1,4 +1,5 @@
 "use client";
+import { LogIn } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -6,6 +7,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { homeSectionNav, mainNav, moreNav, primaryNav } from "@/data/nav";
 import { site } from "@/data/site";
+import { track } from "@/lib/track";
 import Logo from "../../public/assets/images/logo.svg";
 import Menu from "../../public/assets/images/menu.svg";
 import Rocket from "../../public/assets/images/rocket.svg";
@@ -211,10 +213,20 @@ const Header = () => {
         </nav>
 
         {/* Desktop CTA */}
-        <div className="hidden lg:flex items-center">
+        <div className="hidden lg:flex items-center gap-3">
+          {/* Secondary CTA — KITOS/LMS login (sits left of the primary Join Us) */}
+          <Link
+            href={site.loginUrl}
+            onClick={() => track("lms_login", { location: "header" })}
+            className="inline-flex items-center gap-2 rounded-full border border-teal text-teal px-5 py-3 font-semibold hover:bg-teal/10 active:scale-[0.98] transition-all duration-150 motion-reduce:transition-none motion-reduce:active:scale-100"
+          >
+            <LogIn size={18} aria-hidden="true" />
+            Login to LMS
+          </Link>
           <Link
             href={site.whatsappGroupUrl}
             target="_blank"
+            onClick={() => track("whatsapp_join", { location: "header" })}
             className="inline-flex items-center gap-2 rounded-full bg-teal text-white px-5 py-3 font-semibold shadow-sm hover:brightness-95 transition"
           >
             <Image src={Whatsapp} alt="WhatsApp" width={18} height={18} />
@@ -345,6 +357,14 @@ const Header = () => {
 
               {/* CTAs */}
               <div className="mt-auto flex flex-col gap-4 pt-4">
+                <Link
+                  href={site.loginUrl}
+                  onClick={toggleMenu}
+                  className="w-full inline-flex items-center justify-center gap-2 rounded-full border border-teal text-teal px-5 py-3 font-semibold hover:bg-teal/10 active:scale-[0.98] transition-all duration-150 motion-reduce:transition-none motion-reduce:active:scale-100"
+                >
+                  <LogIn size={18} aria-hidden="true" />
+                  Login to LMS
+                </Link>
                 <Link
                   href={site.whatsappGroupUrl}
                   target="_blank"

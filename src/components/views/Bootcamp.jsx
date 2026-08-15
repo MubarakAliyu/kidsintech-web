@@ -13,6 +13,13 @@ import Bootcamp4 from "../../../public/assets/images/bootcamp4.svg";
 import Bootcamp5 from "../../../public/assets/images/bootcamp5.svg";
 import BootcampArr1 from "../../../public/assets/images/bootcamp-arr-1.svg";
 import BootcampArr2 from "../../../public/assets/images/bootcamp-arr-2.svg";
+import { statusText } from "@/data/bootcamps";
+
+// The Design & STEM bootcamp is an upcoming program; its status wording +
+// "to be announced" values are data-driven (see data/bootcamps.js) — no
+// hardcoded status and no ₦0.00 glitch.
+const DESIGN_STEM_STATUS = "upcoming";
+const TBA = "TBA";
 
 const float = {
   hidden: { y: 0 },
@@ -186,21 +193,21 @@ const Bootcamp = () => {
               >
                 <div className="flex flex-col items-start gap-2 md:gap-4">
                   <p className="text-[#2C2F28] font-light text-xl lg:text-2xl lg:leading-[26px] leading-5">Payment</p>
-                  <p className="text-[#34A33F] font-bold text-xl lg:text-2xl lg:leading-[26px] leading-5">₦0.00</p>
+                  <p className="text-[#34A33F] font-bold text-xl lg:text-2xl lg:leading-[26px] leading-5">{TBA}</p>
                 </div>
 
                 <div className="border-t md:border-l border-black w-full md:w-px md:h-[64px]"></div>
 
                 <div className="flex flex-col items-start gap-2 md:gap-4">
                   <p className="text-[#2C2F28] font-light text-xl lg:text-2xl lg:leading-[26px] leading-5">Duration</p>
-                  <p className="text-[#34A33F] font-bold text-xl lg:text-2xl lg:leading-[26px] leading-5">-</p>
+                  <p className="text-[#34A33F] font-bold text-xl lg:text-2xl lg:leading-[26px] leading-5">{TBA}</p>
                 </div>
 
                 <div className="border-t md:border-l border-black w-full md:w-px md:h-[64px]"></div>
 
                 <div className="flex flex-col items-start gap-2 md:gap-4">
                   <p className="text-[#2C2F28] font-light text-xl lg:text-2xl lg:leading-[26px] leading-5">Class Date</p>
-                  <p className="text-[#34A33F] font-bold text-xl lg:text-2xl lg:leading-[26px] leading-5">-</p>
+                  <p className="text-[#34A33F] font-bold text-xl lg:text-2xl lg:leading-[26px] leading-5">{TBA}</p>
                 </div>
               </motion.div>
 
@@ -209,7 +216,7 @@ const Bootcamp = () => {
                 <div className="absolute inset-0 bg-[#A7C383] rounded-tl-[60px] sm:rounded-tl-[80px] lg:rounded-tl-[118px] -skew-x-[5deg] rounded-br-[60px] sm:rounded-br-[80px] lg:rounded-br-[118px]"></div>
                 <div className="relative z-10 py-3 sm:py-4 px-4 sm:px-6 lg:px-8 flex justify-center items-center gap-2 sm:gap-3">
                   <p className="font-semibold text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-[#EEF3E9] leading-4 sm:leading-5 lg:leading-[26px] text-center">
-                    Coming Soon...
+                    {statusText(DESIGN_STEM_STATUS)}
                   </p>
                 </div>
               </motion.div>

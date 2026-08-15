@@ -38,6 +38,17 @@ Heading text manifest (for reference / future `alt` improvements):
 - [ ] Full street address + city (only "Nigeria" set).
 - [ ] Google Maps embed/share URL (`site.mapUrl` empty) — for the Contact page.
 - [ ] Confirm both phone numbers are current.
+- [ ] **`site.loginUrl`** — currently a placeholder pointing to `/kitos` (used by
+  the header **"Login to LMS"** button). Replace with the real KITOS/LMS login URL
+  when the platform goes live.
+
+## 🧑‍🤝‍🧑 Team photos (`public/assets/images/`, used by `src/app/about-us/page.jsx`)
+Drop the real photo at the exact filename — no code change needed. Recommended
+square-ish crop, same look as the existing team images (~334×326).
+- [ ] `team1.avif` — Aliyu Mubarak (Founder) — *existing*
+- [ ] `team2.avif` — Murtala Ishaq (Co-Founder & COO) — *existing image, person renamed*
+- [ ] `team3.avif` — Mustapher Muhammad Lawal (Co-Founder & CTO) — *existing image, person renamed*
+- [ ] `team4.avif` — Faruk Yusuf (Educator/Front End Dev) — **placeholder (copy of team3.avif); supply real photo**
 
 ## 🎓 Programs (`src/data/programs.js`)
 - [ ] Confirm per-level age bands, durations, prerequisites, certification wording.
@@ -73,6 +84,18 @@ Heading text manifest (for reference / future `alt` improvements):
 - [ ] Exact partner-school count and learning-hours figure.
 
 ---
+
+## 📈 Analytics & registration env vars (Batch 10) — set in `.env.local`, NEVER commit
+All are optional; the site no-ops gracefully without them.
+- [ ] `NEXT_PUBLIC_GA_ID` — Google Analytics 4 (loads prod-only, after consent).
+- [ ] `NEXT_PUBLIC_CLARITY_ID` — Microsoft Clarity.
+- [ ] `NEXT_PUBLIC_META_PIXEL_ID` — Meta (Facebook) Pixel.
+- [ ] `NEXT_PUBLIC_GSC_VERIFICATION` — Google Search Console verification token
+  (placeholder google/yandex/yahoo codes were removed).
+- [ ] `NEXT_PUBLIC_EMAILJS_SERVICE_ID` / `_TEMPLATE_ID` / `_PUBLIC_KEY` — contact form.
+- [ ] `NEXT_PUBLIC_ENABLE_NATIVE_REGISTER` = `"true"` to switch `/register` from the
+  Google-Form link to the native form + Paystack scaffold.
+- [ ] `NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY` — Paystack inline (only when going native/live).
 
 ## 🔐 SEO / analytics (later batches; needs your keys)
 - [ ] Real search-console verification codes (Google/Yandex/Yahoo) — currently

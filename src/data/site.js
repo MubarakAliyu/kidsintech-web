@@ -23,7 +23,7 @@ export const site = {
   handle: "@kidsintechkb",
 
   // Contact
-  email: "hello@kidsintech.school", // was hello@kidsintech.com in the footer
+  email: "hello@kidsintech.school", // corrected from the old .com footer typo
   phones: [
     { label: "+234 706 783 4186", tel: "+2347067834186" },
     { label: "0906 098 5201", tel: "+2349060985201" },
@@ -43,6 +43,11 @@ export const site = {
 
   whatsappGroupUrl:
     "https://chat.whatsapp.com/LrBRk3G4qSaFBcmNSFILEC?mode=ems_copy_t",
+
+  // LMS (KITOS) login destination for the header "Login to LMS" button.
+  // TODO: point at the real KITOS/LMS login URL when the platform goes live
+  // (placeholder routes to the /kitos info page for now).
+  loginUrl: "/kitos",
 };
 
 /*
