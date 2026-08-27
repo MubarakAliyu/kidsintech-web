@@ -12,11 +12,25 @@ import { about } from "@/data/about";
 import { site } from "@/data/site";
 import { fadeUp as fadeUpUtil, Reveal, RevealGroup } from "@/lib/motion";
 import { track } from "@/lib/track";
+import AishaImg from "../../../public/assets/images/Aisha.jpeg";
+// Meet the Team photos. To swap in a real photo, just drop the file at the
+// path below (same filename) — no code change needed:
+//   team1.avif       → Aliyu Mubarak (Founder)                         TODO: real photo
+//   team2.avif       → Murtala Ishaq (Co-Founder & COO)                TODO: real photo
+//   musty.jpeg       → Mustapher Muhammad Lawal (Co-Founder & CTO)     ✓ real photo
+//   faruk.jpeg       → Faruk Yusuf (Educator/Front End Dev)            ✓ real photo
+//   Aisha.jpeg       → Aisha Zakari Zagga (Social Media/Content Mgr)   ✓ real photo
+//   amina.jpeg       → Amina Hassan (Program Coordinator/Assistant)    TODO: placeholder (copy of faruk.jpeg)
+//   abdulmalik.jpeg  → Abdulmalik M. Yahaya (Program Coordinator)      TODO: placeholder (copy of faruk.jpeg)
+import AbdulmalikImg from "../../../public/assets/images/abdulmalik.jpeg";
 import Heading from "../../../public/assets/images/aboutHeading.avif";
 import GalleryImg1 from "../../../public/assets/images/aboutImg1.avif";
 import GalleryImgMob1 from "../../../public/assets/images/aboutImg1Mobile.avif";
 import GalleryImg2 from "../../../public/assets/images/aboutImg2.avif";
 import GalleryImg3 from "../../../public/assets/images/aboutImg3.avif";
+import AminaImg from "../../../public/assets/images/amina.jpeg";
+import FarukImg from "../../../public/assets/images/faruk.jpeg";
+import MustyImg from "../../../public/assets/images/musty.jpeg";
 import TechCreativity from "../../../public/assets/images/outcome1.avif";
 import CriticalThinking from "../../../public/assets/images/outcome2.avif";
 import ConfidenceExpression from "../../../public/assets/images/outcome3.avif";
@@ -24,16 +38,8 @@ import CollaborationFun from "../../../public/assets/images/outcome4.avif";
 import Rocket from "../../../public/assets/images/rocket.svg";
 import TeachHeading from "../../../public/assets/images/teachHeading.avif";
 import TeachHeadingMob from "../../../public/assets/images/teachHeadingMob.avif";
-// Meet the Team photos. To swap in a real photo, just drop the file at the
-// path below (same filename) — no code change needed:
-//   team1.avif → Aliyu Mubarak (Founder)
-//   team2.avif → Murtala Ishaq (Co-Founder & COO)
-//   team3.avif → Mustapher Muhammad Lawal (Co-Founder & CTO)
-//   team4.avif → Faruk Yusuf (Educator/Front End Dev)  TODO: replace placeholder (currently a copy of team3.avif)
 import TeamImg1 from "../../../public/assets/images/team1.avif";
 import TeamImg2 from "../../../public/assets/images/team2.avif";
-import TeamImg3 from "../../../public/assets/images/team3.avif";
-import TeamImg4 from "../../../public/assets/images/team4.avif";
 import TeamHeading from "../../../public/assets/images/teamHeading.avif";
 
 // Variant: fade up with custom stagger
@@ -591,8 +597,8 @@ const AboutUsPage = () => {
               >
                 <figure className=" overflow-hidden cursor-pointer group transform transition-transform duration-300 ease-in-out hover:scale-105 w-full lg:w-[334px] lg:h-[326px] h-full">
                   <Image
-                    src={TeamImg3}
-                    alt="Gallery image 3"
+                    src={MustyImg}
+                    alt="Mustapher Muhammad Lawal"
                     className="w-full h-full object-cover md:object-contain"
                     placeholder="blur"
                   />
@@ -615,8 +621,8 @@ const AboutUsPage = () => {
               >
                 <figure className=" overflow-hidden cursor-pointer group transform transition-transform duration-300 ease-in-out hover:scale-105 w-full lg:w-[334px] lg:h-[326px] h-full">
                   <Image
-                    src={TeamImg4}
-                    alt="Gallery image 4"
+                    src={FarukImg}
+                    alt="Faruk Yusuf"
                     className="w-full h-full object-cover md:object-contain"
                     placeholder="blur"
                   />
@@ -627,6 +633,78 @@ const AboutUsPage = () => {
                   </p>
                   <p className="text-base md:text-lg lg:text-xl  text-[#401D26] leading-5 sm:leading-6 lg:leading-[26px]">
                     Educator/Front End Dev <br /> @ Kids In Tech
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* team5 member */}
+              <motion.div
+                variants={fadeUp}
+                custom={6}
+                className="flex flex-col items-start gap-2"
+              >
+                <figure className=" overflow-hidden cursor-pointer group transform transition-transform duration-300 ease-in-out hover:scale-105 w-full lg:w-[334px] lg:h-[326px] h-full">
+                  <Image
+                    src={AishaImg}
+                    alt="Aisha Zakari Zagga"
+                    className="w-full h-full object-cover md:object-contain"
+                    placeholder="blur"
+                  />
+                </figure>
+                <div className="flex flex-col items-start gap-2">
+                  <p className="text-base md:text-lg lg:text-2xl text-[#401D26] leading-5 sm:leading-6 lg:leading-[26px] uppercase font-semibold">
+                    Aisha Zakari <br /> Zagga
+                  </p>
+                  <p className="text-base md:text-lg lg:text-xl  text-[#401D26] leading-5 sm:leading-6 lg:leading-[26px]">
+                    Social Media/Content Manager <br /> @ Kids In Tech
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* team6 member */}
+              <motion.div
+                variants={fadeUp}
+                custom={7}
+                className="flex flex-col items-start gap-2"
+              >
+                <figure className=" overflow-hidden cursor-pointer group transform transition-transform duration-300 ease-in-out hover:scale-105 w-full lg:w-[334px] lg:h-[326px] h-full">
+                  <Image
+                    src={AminaImg}
+                    alt="Amina Hassan"
+                    className="w-full h-full object-cover md:object-contain"
+                    placeholder="blur"
+                  />
+                </figure>
+                <div className="flex flex-col items-start gap-2">
+                  <p className="text-base md:text-lg lg:text-2xl text-[#401D26] leading-5 sm:leading-6 lg:leading-[26px] uppercase font-semibold">
+                    Amina <br /> Hassan
+                  </p>
+                  <p className="text-base md:text-lg lg:text-xl  text-[#401D26] leading-5 sm:leading-6 lg:leading-[26px]">
+                    Program Coordinator/Assistant <br /> @ Kids In Tech
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* team7 member */}
+              <motion.div
+                variants={fadeUp}
+                custom={8}
+                className="flex flex-col items-start gap-2"
+              >
+                <figure className=" overflow-hidden cursor-pointer group transform transition-transform duration-300 ease-in-out hover:scale-105 w-full lg:w-[334px] lg:h-[326px] h-full">
+                  <Image
+                    src={AbdulmalikImg}
+                    alt="Abdulmalik M. Yahaya"
+                    className="w-full h-full object-cover md:object-contain"
+                    placeholder="blur"
+                  />
+                </figure>
+                <div className="flex flex-col items-start gap-2">
+                  <p className="text-base md:text-lg lg:text-2xl text-[#401D26] leading-5 sm:leading-6 lg:leading-[26px] uppercase font-semibold">
+                    Abdulmalik M. <br /> Yahaya
+                  </p>
+                  <p className="text-base md:text-lg lg:text-xl  text-[#401D26] leading-5 sm:leading-6 lg:leading-[26px]">
+                    Program Coordinator <br /> @ Kids In Tech
                   </p>
                 </div>
               </motion.div>
