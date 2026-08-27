@@ -45,10 +45,13 @@ Heading text manifest (for reference / future `alt` improvements):
 ## 🧑‍🤝‍🧑 Team photos (`public/assets/images/`, used by `src/app/about-us/page.jsx`)
 Drop the real photo at the exact filename — no code change needed. Recommended
 square-ish crop, same look as the existing team images (~334×326).
-- [ ] `team1.avif` — Aliyu Mubarak (Founder) — *existing*
-- [ ] `team2.avif` — Murtala Ishaq (Co-Founder & COO) — *existing image, person renamed*
-- [ ] `team3.avif` — Mustapher Muhammad Lawal (Co-Founder & CTO) — *existing image, person renamed*
-- [ ] `team4.avif` — Faruk Yusuf (Educator/Front End Dev) — **placeholder (copy of team3.avif); supply real photo**
+- [ ] `team1.avif` — Aliyu Mubarak (Founder) — *existing team photo*
+- [ ] `team2.avif` — Murtala Ishaq (Co-Founder & COO) — *existing team photo, person renamed*
+- [x] `musty.jpeg` — Mustapher Muhammad Lawal (Co-Founder & CTO) — **real photo supplied**
+- [x] `faruk.jpeg` — Faruk Yusuf (Educator/Front End Dev) — **real photo supplied**
+- [x] `Aisha.jpeg` — Aisha Zakari Zagga (Social Media/Content Manager) — **real photo supplied**
+- [ ] Amina Hassan (Program Coordinator/Assistant) — **empty placeholder (shares `team2.avif`); supply real photo, then wire a dedicated import**
+- [ ] Abdulmalik M. Yahaya (Program Coordinator) — **empty placeholder (shares `team2.avif`); supply real photo, then wire a dedicated import**
 
 ## 🎓 Programs (`src/data/programs.js`)
 - [ ] Confirm per-level age bands, durations, prerequisites, certification wording.
