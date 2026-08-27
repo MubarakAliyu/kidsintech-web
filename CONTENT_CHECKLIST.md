@@ -50,8 +50,8 @@ square-ish crop, same look as the existing team images (~334×326).
 - [x] `musty.jpeg` — Mustapher Muhammad Lawal (Co-Founder & CTO) — **real photo supplied**
 - [x] `faruk.jpeg` — Faruk Yusuf (Educator/Front End Dev) — **real photo supplied**
 - [x] `Aisha.jpeg` — Aisha Zakari Zagga (Social Media/Content Manager) — **real photo supplied**
-- [ ] `amina.jpeg` — Amina Hassan (Program Coordinator/Assistant) — **placeholder (copy of faruk.jpeg); supply real photo**
-- [ ] `abdulmalik.jpeg` — Abdulmalik M. Yahaya (Program Coordinator) — **placeholder (copy of faruk.jpeg); supply real photo**
+- [ ] Amina Hassan (Program Coordinator/Assistant) — **empty placeholder (shares `team2.avif`); supply real photo, then wire a dedicated import**
+- [ ] Abdulmalik M. Yahaya (Program Coordinator) — **empty placeholder (shares `team2.avif`); supply real photo, then wire a dedicated import**
 
 ## 🎓 Programs (`src/data/programs.js`)
 - [ ] Confirm per-level age bands, durations, prerequisites, certification wording.

@@ -20,15 +20,13 @@ import AishaImg from "../../../public/assets/images/Aisha.jpeg";
 //   musty.jpeg       → Mustapher Muhammad Lawal (Co-Founder & CTO)     ✓ real photo
 //   faruk.jpeg       → Faruk Yusuf (Educator/Front End Dev)            ✓ real photo
 //   Aisha.jpeg       → Aisha Zakari Zagga (Social Media/Content Mgr)   ✓ real photo
-//   amina.jpeg       → Amina Hassan (Program Coordinator/Assistant)    TODO: placeholder (copy of faruk.jpeg)
-//   abdulmalik.jpeg  → Abdulmalik M. Yahaya (Program Coordinator)      TODO: placeholder (copy of faruk.jpeg)
-import AbdulmalikImg from "../../../public/assets/images/abdulmalik.jpeg";
+//   Amina Hassan (Program Coordinator/Assistant)  → empty placeholder (team2.avif) until a photo is supplied
+//   Abdulmalik M. Yahaya (Program Coordinator)    → empty placeholder (team2.avif) until a photo is supplied
 import Heading from "../../../public/assets/images/aboutHeading.avif";
 import GalleryImg1 from "../../../public/assets/images/aboutImg1.avif";
 import GalleryImgMob1 from "../../../public/assets/images/aboutImg1Mobile.avif";
 import GalleryImg2 from "../../../public/assets/images/aboutImg2.avif";
 import GalleryImg3 from "../../../public/assets/images/aboutImg3.avif";
-import AminaImg from "../../../public/assets/images/amina.jpeg";
 import FarukImg from "../../../public/assets/images/faruk.jpeg";
 import MustyImg from "../../../public/assets/images/musty.jpeg";
 import TechCreativity from "../../../public/assets/images/outcome1.avif";
@@ -669,7 +667,7 @@ const AboutUsPage = () => {
               >
                 <figure className=" overflow-hidden cursor-pointer group transform transition-transform duration-300 ease-in-out hover:scale-105 w-full lg:w-[334px] lg:h-[326px] h-full">
                   <Image
-                    src={AminaImg}
+                    src={TeamImg2}
                     alt="Amina Hassan"
                     className="w-full h-full object-cover md:object-contain"
                     placeholder="blur"
@@ -693,7 +691,7 @@ const AboutUsPage = () => {
               >
                 <figure className=" overflow-hidden cursor-pointer group transform transition-transform duration-300 ease-in-out hover:scale-105 w-full lg:w-[334px] lg:h-[326px] h-full">
                   <Image
-                    src={AbdulmalikImg}
+                    src={TeamImg2}
                     alt="Abdulmalik M. Yahaya"
                     className="w-full h-full object-cover md:object-contain"
                     placeholder="blur"
